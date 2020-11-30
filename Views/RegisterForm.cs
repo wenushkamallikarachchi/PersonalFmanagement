@@ -77,6 +77,17 @@ namespace w1673746
                 mailTextBox.Select();
                 return;
             }
+            else
+            {
+
+                bool mail = IsValidEmail(mailTextBox.Text);
+                if (mail.Equals(false))
+                {
+                    MessageBox.Show("Please enter valid E-mail address: ", message, okBt, MessageBoxIcon.Error);
+                    mailTextBox.Select();
+                    return;
+                }
+            }
 
             //phone number
             if (string.IsNullOrEmpty(phNoTextBox.Text))
@@ -90,10 +101,14 @@ namespace w1673746
                 bool num = IsPhoneNumber(phNoTextBox.Text);
                 if (num.Equals(false))
                 {
-                    MessageBox.Show("Please enter valid Phone number: ", message, okBt, icon);
+                    MessageBox.Show("Please enter valid Phone number: ", message, okBt, MessageBoxIcon.Error);
                     phNoTextBox.Select();
+
+                    return;
                 }
             }
+
+
             //username
             if (string.IsNullOrEmpty(usernameTextBox.Text))
             {
@@ -101,6 +116,8 @@ namespace w1673746
                 usernameTextBox.Select();
                 return;
             }
+
+
             //passwrod
             if (string.IsNullOrEmpty(passTextBox.Text))
             {
@@ -136,9 +153,24 @@ namespace w1673746
             }
 
         }
+        //phone number validation
         public static bool IsPhoneNumber(string number)
         {
-            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+            return number.All(char.IsDigit);
+        }
+
+        //
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
