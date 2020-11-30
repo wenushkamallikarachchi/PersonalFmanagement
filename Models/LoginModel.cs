@@ -23,6 +23,25 @@ namespace w1673746.Models
 
 
 
+
+        }
+        public DataTable executeIsDup(string name)
+        {
+            string isDup = "SELECT Username FROM loginTB where Username='" + name + "'";
+            DataTable userDataCheckDup = Connection.DbConnection.executeSQL(isDup);
+            return userDataCheckDup;
+        }
+        public DataTable executeRegSQL(string fname, string lname, string mail, string phNo, string username, string password)
+        {
+            //Console.WriteLine("name is " + name);
+
+            string sqlServer = string.Empty;
+            sqlServer += "INSERT INTO loginTB (first_name,last_name,email,phone_no,username,password)";
+            sqlServer += "VALUES ('" + fname + "','" + lname + "','" + mail + "','" + phNo + "','" + username + "','" + password + "')";
+
+            DataTable regUserData = Connection.DbConnection.executeSQL(sqlServer);
+
+            return regUserData;
         }
     }
 }

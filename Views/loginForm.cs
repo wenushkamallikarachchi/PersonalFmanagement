@@ -40,7 +40,7 @@ namespace w1673746
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(nameTextBox.Text) &&
                     !string.IsNullOrEmpty(passwordTextBox.Text))
@@ -50,7 +50,7 @@ namespace w1673746
                 {
                     nameTextBox.Clear();
                     passwordTextBox.Clear();
-                    MessageBox.Show("Succesfully sign in", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Succesfully sign in", "Sucess Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
 
                     MainForm mainForm = new MainForm();
@@ -75,13 +75,17 @@ namespace w1673746
 
         private void signup_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            loginForm loginForm = new loginForm();
+            this.Hide();
+
             RegisterForm reg = new RegisterForm();
-            reg.ShowDialog();
+            reg.Show();
         }
 
         private void nameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 }

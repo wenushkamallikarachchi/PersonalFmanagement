@@ -55,7 +55,7 @@
             this.label1.Size = new System.Drawing.Size(88, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // firstNameTextBox
             // 
@@ -76,6 +76,7 @@
             this.SignupBt.TabIndex = 2;
             this.SignupBt.Text = "Sign up";
             this.SignupBt.UseVisualStyleBackColor = false;
+            this.SignupBt.Click += new System.EventHandler(this.SignupBt_Click);
             // 
             // label2
             // 
@@ -176,7 +177,7 @@
             this.label7.Size = new System.Drawing.Size(86, 20);
             this.label7.TabIndex = 8;
             this.label7.Text = "Last Name:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+
             // 
             // closeBt
             // 
