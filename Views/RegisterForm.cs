@@ -156,7 +156,7 @@ namespace w1673746
         //phone number validation
         public static bool IsPhoneNumber(string number)
         {
-            return number.All(char.IsDigit);
+            return Regex.Match(number, @"^[0-9]{10}$").Success;
         }
 
         //

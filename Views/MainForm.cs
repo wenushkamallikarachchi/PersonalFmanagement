@@ -102,6 +102,8 @@ namespace w1673746
 
         private void addContactBt_Click(object sender, EventArgs e)
         {
+            MainForm mf = new MainForm();
+            this.Hide();
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.Show();
         }

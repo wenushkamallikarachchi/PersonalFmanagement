@@ -24,5 +24,15 @@ namespace w1673746.Models
             return userData;
         }
 
+        public DataTable executeAddContact(string first_name, string last_name, string phNumber, string job, string address)
+        {
+            string sqlServer = string.Empty;
+            sqlServer += "INSERT INTO contactTB (first_name,last_name,phone_No,address,job_role)";
+            sqlServer += "VALUES ('" + first_name + "','" + last_name + "','" + phNumber + "','" + address + "','" + job + "')";
+
+            DataTable addContactData = Connection.DbConnection.executeSQL(sqlServer);
+
+            return addContactData;
+        }
     }
 }
