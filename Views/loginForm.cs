@@ -50,7 +50,7 @@ namespace w1673746
                 {
                     nameTextBox.Clear();
                     passwordTextBox.Clear();
-                    MessageBox.Show("Succesfully sign in", "Sucess Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Succesfully sign in", "Login Form", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
 
                     MainForm mainForm = new MainForm();

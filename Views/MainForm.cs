@@ -107,5 +107,10 @@ namespace w1673746
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
