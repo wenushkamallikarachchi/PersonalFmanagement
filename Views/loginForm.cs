@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using w1673746.Models;
+using w1673746.Views;
 namespace w1673746
 {
     public partial class loginForm : Form
     {
         static LoginModel lm = new LoginModel();
+        int id;
         public loginForm()
         {
             InitializeComponent();
@@ -46,6 +48,18 @@ namespace w1673746
                     !string.IsNullOrEmpty(passwordTextBox.Text))
             {
                 DataTable userData = lm.executeLoginSQL(nameTextBox.Text, passwordTextBox.Text);
+
+
+                foreach (DataRow row in userData.Rows)
+                {
+                    string idn = row["AUTO_ID"].ToString();
+                    id = int.Parse(idn);
+
+                }
+
+                Console.WriteLine("data in numer" + id);
+
+
                 if (userData.Rows.Count > 0)
                 {
                     nameTextBox.Clear();
@@ -54,7 +68,9 @@ namespace w1673746
                     this.Hide();
 
                     MainForm mainForm = new MainForm();
+                    mainForm.setId(id);
                     mainForm.Show();
+
                 }
                 else
                 {

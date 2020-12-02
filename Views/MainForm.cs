@@ -15,6 +15,11 @@ namespace w1673746
     public partial class MainForm : Form
     {
         static ContactModel cm = new ContactModel();
+        private int user_id;
+        public void setId(int id)
+        {
+            user_id = id;
+        }
         public MainForm()
         {
             InitializeComponent();
@@ -59,7 +64,7 @@ namespace w1673746
 
         private void loadUserData()
         {
-            DataTable userData = cm.executeAllUserData();
+            DataTable userData = cm.executeAllUserData(user_id);
 
             dataGridView1.DataSource = userData;
             dataGridView1.Columns[0].HeaderText = "First Name";
@@ -70,9 +75,6 @@ namespace w1673746
             dataGridView1.Columns[1].Width = 200;
             dataGridView1.Columns[2].Width = 200;
             dataGridView1.Columns[3].Width = 200;
-
-
-
 
         }
 

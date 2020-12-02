@@ -9,9 +9,9 @@ namespace w1673746.Models
 {
     class ContactModel
     {
-        public DataTable executeAllUserData()
+        public DataTable executeAllUserData(int id)
         {
-            string sqlServer = "SELECT first_name,job_role,phone_no,address FROM contactTB";
+            string sqlServer = "SELECT first_Name,job_role,phone_no,address FROM contactTB WHERE user_ID='" + id + "'";
             DataTable userData = Connection.DbConnection.executeSQL(sqlServer);
             return userData;
         }
@@ -27,11 +27,10 @@ namespace w1673746.Models
         public DataTable executeAddContact(string first_name, string last_name, string phNumber, string job, string address)
         {
             string sqlServer = string.Empty;
-            sqlServer += "INSERT INTO contactTB (first_name,last_name,phone_No,address,job_role)";
+            sqlServer += "INSERT INTO contactTB (first_Name,last_Name,phone_No,address,job_role)";
             sqlServer += "VALUES ('" + first_name + "','" + last_name + "','" + phNumber + "','" + address + "','" + job + "')";
 
             DataTable addContactData = Connection.DbConnection.executeSQL(sqlServer);
-
             return addContactData;
         }
     }

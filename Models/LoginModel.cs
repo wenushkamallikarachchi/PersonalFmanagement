@@ -40,7 +40,6 @@ namespace w1673746.Models
             sqlServer += "VALUES ('" + fname + "','" + lname + "','" + mail + "','" + phNo + "','" + username + "','" + password + "')";
 
             DataTable regUserData = Connection.DbConnection.executeSQL(sqlServer);
-
             return regUserData;
         }
     }
