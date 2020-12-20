@@ -20,6 +20,11 @@ namespace w1673746
         {
             user_id = id;
         }
+
+        public int getId()
+        {
+            return user_id;
+        }
         public MainForm()
         {
             InitializeComponent();
@@ -105,9 +110,10 @@ namespace w1673746
         private void addContactBt_Click(object sender, EventArgs e)
         {
             MainForm mf = new MainForm();
-            this.Hide();
+
             AddContactForm addContactForm = new AddContactForm();
-            addContactForm.Show();
+            addContactForm.setId(user_id);
+            addContactForm.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

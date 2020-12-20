@@ -14,6 +14,11 @@ namespace w1673746.Views
     public partial class AddContactForm : Form
     {
         ContactModel cm = new ContactModel();
+        private int user_id;
+        public void setId(int id)
+        {
+            user_id = id;
+        }
         public AddContactForm()
         {
             InitializeComponent();
@@ -46,10 +51,12 @@ namespace w1673746.Views
         private void cancelBt_Click(object sender, EventArgs e)
         {
             clearFeilds();
+
             AddContactForm adf = new AddContactForm();
             this.Hide();
-            MainForm mf = new MainForm();
-            mf.Show();
+            /* MainForm mf = new MainForm();
+             mf.Show();*/
+
         }
         //phone number validation
         public static bool IsPhoneNumber(string number)
@@ -86,13 +93,12 @@ namespace w1673746.Views
             result = MessageBox.Show("Do you want to add contact information? ", "Save Data & Add Contact", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                DataTable addContact = cm.executeAddContact(firstNameText.Text, lastNameText.Text, phNoText.Text, jobText.Text, addressText.Text);
+                DataTable addContact = cm.executeAddContact(firstNameText.Text, lastNameText.Text, phNoText.Text, jobText.Text, addressText.Text, user_id);
                 MessageBox.Show("Successfully Add Contact. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
                 AddContactForm acf = new AddContactForm();
                 this.Hide();
-                MainForm mf = new MainForm();
-                mf.Show();
+
             }
         }
     }

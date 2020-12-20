@@ -21,28 +21,7 @@ namespace w1673746
 
 
         }
-
-        private void loginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Login(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(nameTextBox.Text) &&
                     !string.IsNullOrEmpty(passwordTextBox.Text))
@@ -102,6 +81,5 @@ namespace w1673746
         {
 
         }
-
     }
 }

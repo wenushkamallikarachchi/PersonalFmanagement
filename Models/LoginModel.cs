@@ -20,10 +20,6 @@ namespace w1673746.Models
 
             DataTable userData = Connection.DbConnection.executeSQL(sqlServer);
             return userData;
-
-
-
-
         }
         public DataTable executeIsDup(string name)
         {

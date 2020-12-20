@@ -69,7 +69,6 @@
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 7;
             this.label5.Text = "Password :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -80,7 +79,6 @@
             this.label6.Size = new System.Drawing.Size(91, 20);
             this.label6.TabIndex = 8;
             this.label6.Text = "Username :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // passwordTextBox
             // 
@@ -109,19 +107,18 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Personal Financial Management";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // loginBt
             // 
             this.loginBt.BackColor = System.Drawing.Color.OldLace;
             this.loginBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginBt.Location = new System.Drawing.Point(147, 199);
+            this.loginBt.Location = new System.Drawing.Point(172, 195);
             this.loginBt.Name = "loginBt";
             this.loginBt.Size = new System.Drawing.Size(167, 28);
             this.loginBt.TabIndex = 11;
             this.loginBt.Text = "Sign in";
             this.loginBt.UseVisualStyleBackColor = false;
-            this.loginBt.Click += new System.EventHandler(this.button1_Click_1);
+            this.loginBt.Click += new System.EventHandler(this.Login);
             // 
             // loginForm
             // 
@@ -140,7 +137,6 @@
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Financial Management | Login Form";
-            this.Load += new System.EventHandler(this.loginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
