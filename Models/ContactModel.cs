@@ -33,5 +33,26 @@ namespace w1673746.Models
             DataTable addContactData = Connection.DbConnection.executeSQL(sqlServer);
             return addContactData;
         }
+
+        public DataTable executeDisplayContactById(int id)
+        {
+            string sqlServer = "SELECT contact_ID, first_Name, last_Name, phone_no, job_role, address FROM contactTB WHERE contact_ID = '" + id + "'";
+            DataTable contactData = Connection.DbConnection.executeSQL(sqlServer);
+            return contactData;
+        }
+
+        public DataTable executeUpdateContact(string first_Name, string last_Name, string phone_no, string job_role, string address, int id)
+        {
+            string contactSQL = "UPDATE contactTB SET first_Name = '" + first_Name + "', last_Name = '" + last_Name + "', phone_no = '" + phone_no + "', job_role = '" + job_role + "',  address = '" + address + "' WHERE contact_ID = '" + id + "'";
+            DataTable contactData = Connection.DbConnection.executeSQL(contactSQL);
+            return contactData;
+        }
+
+        public DataTable executeSearchContact(string name)
+        {
+            string contactSQL = "SELECT * FROM Contact WHERE Name LIKE '" + name + "%'";
+            DataTable contactData = Connection.DbConnection.executeSQL(contactSQL);
+            return contactData;
+        }
     }
 }

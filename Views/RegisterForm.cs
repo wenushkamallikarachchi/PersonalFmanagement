@@ -145,7 +145,7 @@ namespace w1673746
                 DataTable userDataReg = lm.executeRegSQL(firstNameTextBox.Text, lastNameTextBox.Text, mailTextBox.Text, phNoTextBox.Text, usernameTextBox.Text, passTextBox.Text);
                 MessageBox.Show("Successfully Sign up. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
-                RegisterForm registerForm = new RegisterForm();
+                // RegisterForm registerForm = new RegisterForm();
                 this.Hide();
 
                 loginForm loginForm = new loginForm();

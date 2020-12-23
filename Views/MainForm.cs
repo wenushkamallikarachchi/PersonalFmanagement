@@ -16,6 +16,7 @@ namespace w1673746
     {
         static ContactModel cm = new ContactModel();
         private int user_id;
+        static String contId;
         public void setId(int id)
         {
             user_id = id;
@@ -119,6 +120,24 @@ namespace w1673746
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void updateBt_Click(object sender, EventArgs e)
+        {
+            UpdateContactForm updateContactForm = new UpdateContactForm();
+            updateContactForm.setId(int.Parse(contId));
+            updateContactForm.ShowDialog();
+        }
+
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            contId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+        }
+
+        private void textSearchName_TextChanged(object sender, EventArgs e)
+        {
+            DataTable contactData = cm.executeSearchContact(textSearchContact.Text);
+            dataGridView1.DataSource = contactData;
         }
     }
 }
