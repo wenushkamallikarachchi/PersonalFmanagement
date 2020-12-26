@@ -96,7 +96,7 @@ namespace w1673746.Views
                 DataTable addContact = cm.executeAddContact(firstNameText.Text, lastNameText.Text, phNoText.Text, jobText.Text, addressText.Text, user_id);
                 MessageBox.Show("Successfully Add Contact. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
-                AddContactForm acf = new AddContactForm();
+                //AddContactForm acf = new AddContactForm();
                 this.Hide();
 
             }

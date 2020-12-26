@@ -22,6 +22,7 @@ namespace w1673746
             user_id = id;
         }
 
+
         public int getId()
         {
             return user_id;
@@ -73,15 +74,16 @@ namespace w1673746
             DataTable userData = cm.executeAllUserData(user_id);
 
             dataGridView1.DataSource = userData;
-            dataGridView1.Columns[0].HeaderText = "First Name";
-            dataGridView1.Columns[1].HeaderText = "Designation";
-            dataGridView1.Columns[2].HeaderText = "Phone Number";
-            dataGridView1.Columns[3].HeaderText = "Address";
+            dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[1].HeaderText = "First Name";
+            dataGridView1.Columns[2].HeaderText = "Designation";
+            dataGridView1.Columns[3].HeaderText = "Phone Number";
+            dataGridView1.Columns[4].HeaderText = "Address";
             dataGridView1.Columns[0].Width = 200;
             dataGridView1.Columns[1].Width = 200;
             dataGridView1.Columns[2].Width = 200;
             dataGridView1.Columns[3].Width = 200;
-
+            dataGridView1.Columns[4].Width = 200;
         }
 
         private void deleteBt_Click(object sender, EventArgs e)
@@ -110,7 +112,7 @@ namespace w1673746
 
         private void addContactBt_Click(object sender, EventArgs e)
         {
-            MainForm mf = new MainForm();
+
 
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.setId(user_id);
@@ -125,19 +127,40 @@ namespace w1673746
         private void updateBt_Click(object sender, EventArgs e)
         {
             UpdateContactForm updateContactForm = new UpdateContactForm();
-            updateContactForm.setId(int.Parse(contId));
+            updateContactForm.setContactId(int.Parse(contId));
             updateContactForm.ShowDialog();
+            loadUserData();
         }
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             contId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Console.WriteLine("cont id is" + contId);
         }
 
         private void textSearchName_TextChanged(object sender, EventArgs e)
         {
             DataTable contactData = cm.executeSearchContact(textSearchContact.Text);
             dataGridView1.DataSource = contactData;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void addIncome_Click(object sender, EventArgs e)
+        {
+            AddIncomeForm incomeForm = new AddIncomeForm();
+            incomeForm.setId(user_id);
+            Console.WriteLine(user_id);
+            
+            incomeForm.ShowDialog();
         }
     }
 }

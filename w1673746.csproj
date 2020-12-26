@@ -49,12 +49,19 @@
   <ItemGroup>
     <Compile Include="Connection\DbConnection.cs" />
     <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\IncomeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Views\AddContactForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AddContactForm.Designer.cs">
       <DependentUpon>AddContactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddIncomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddIncomeForm.Designer.cs">
+      <DependentUpon>AddIncomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\loginForm.cs">
       <SubType>Form</SubType>
@@ -84,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AddContactForm.resx">
       <DependentUpon>AddContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddIncomeForm.resx">
+      <DependentUpon>AddIncomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>

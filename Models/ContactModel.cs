@@ -11,7 +11,7 @@ namespace w1673746.Models
     {
         public DataTable executeAllUserData(int id)
         {
-            string sqlServer = "SELECT first_Name,job_role,phone_no,address FROM contactTB WHERE user_ID='" + id + "'";
+            string sqlServer = "SELECT contact_ID,first_Name,job_role,phone_no,address FROM contactTB WHERE user_ID='" + id + "'";
             DataTable userData = Connection.DbConnection.executeSQL(sqlServer);
             return userData;
         }
@@ -50,9 +50,12 @@ namespace w1673746.Models
 
         public DataTable executeSearchContact(string name)
         {
-            string contactSQL = "SELECT * FROM Contact WHERE Name LIKE '" + name + "%'";
+            string contactSQL = "SELECT * FROM contactTB WHERE first_Name LIKE '" + name + "%'";
             DataTable contactData = Connection.DbConnection.executeSQL(contactSQL);
             return contactData;
         }
+
+
+
     }
 }

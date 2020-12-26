@@ -202,6 +202,7 @@
             this.Name = "UpdateContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Financial Management | Update Contact Form";
+            this.Load += new System.EventHandler(this.UpdateContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

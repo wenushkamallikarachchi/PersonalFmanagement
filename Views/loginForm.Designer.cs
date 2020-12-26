@@ -137,6 +137,7 @@
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Financial Management | Login Form";
+            this.Load += new System.EventHandler(this.loginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

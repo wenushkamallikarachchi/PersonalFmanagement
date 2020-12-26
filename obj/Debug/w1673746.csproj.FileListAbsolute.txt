@@ -12,3 +12,4 @@ D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w16737
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.Views.AddContactForm.resources
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.csprojAssemblyReference.cache
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.Views.UpdateContactForm.resources
+D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.Views.AddIncomeForm.resources

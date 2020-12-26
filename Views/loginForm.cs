@@ -81,5 +81,10 @@ namespace w1673746
         {
 
         }
+
+        private void loginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

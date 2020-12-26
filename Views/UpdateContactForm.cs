@@ -15,7 +15,7 @@ namespace w1673746.Views
         public int id;
         ContactModel cm = new ContactModel();
 
-        public void setId(int id)
+        public void setContactId(int id)
         {
             this.id = id;
             displayContactDetails(id);
@@ -59,6 +59,11 @@ namespace w1673746.Views
 
                 this.Close();
             }
+        }
+
+        private void UpdateContactForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
