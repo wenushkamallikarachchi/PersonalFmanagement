@@ -38,10 +38,10 @@
             this.deleteBt = new System.Windows.Forms.Button();
             this.textSearchContact = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxIncome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.deleteIncome = new System.Windows.Forms.Button();
             this.addIncome = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -70,7 +70,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(43, 5);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(846, 498);
+            this.tabControl1.Size = new System.Drawing.Size(915, 498);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -95,7 +95,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(838, 463);
+            this.tabPage2.Size = new System.Drawing.Size(907, 463);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Contacts";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -120,7 +120,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(45, 126);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(755, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(824, 266);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
@@ -129,7 +129,7 @@
             // 
             this.addContactBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addContactBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addContactBt.Location = new System.Drawing.Point(295, 31);
+            this.addContactBt.Location = new System.Drawing.Point(364, 31);
             this.addContactBt.Name = "addContactBt";
             this.addContactBt.Size = new System.Drawing.Size(158, 33);
             this.addContactBt.TabIndex = 4;
@@ -141,7 +141,7 @@
             // 
             this.updateBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.updateBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.updateBt.Location = new System.Drawing.Point(671, 31);
+            this.updateBt.Location = new System.Drawing.Point(740, 31);
             this.updateBt.Name = "updateBt";
             this.updateBt.Size = new System.Drawing.Size(158, 33);
             this.updateBt.TabIndex = 3;
@@ -153,7 +153,7 @@
             // 
             this.deleteBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.deleteBt.Location = new System.Drawing.Point(485, 31);
+            this.deleteBt.Location = new System.Drawing.Point(554, 31);
             this.deleteBt.Name = "deleteBt";
             this.deleteBt.Size = new System.Drawing.Size(158, 33);
             this.deleteBt.TabIndex = 2;
@@ -172,67 +172,68 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.textBoxIncome);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.deleteIncome);
             this.tabPage3.Controls.Add(this.addIncome);
             this.tabPage3.Controls.Add(this.dataGridView2);
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(838, 463);
+            this.tabPage3.Size = new System.Drawing.Size(907, 463);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Income";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxIncome
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Open Sans", 12F);
-            this.textBox1.Location = new System.Drawing.Point(122, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 29);
-            this.textBox1.TabIndex = 5;
+            this.textBoxIncome.Font = new System.Drawing.Font("Open Sans", 12F);
+            this.textBoxIncome.Location = new System.Drawing.Point(170, 34);
+            this.textBoxIncome.Name = "textBoxIncome";
+            this.textBoxIncome.Size = new System.Drawing.Size(149, 29);
+            this.textBoxIncome.TabIndex = 5;
+            this.textBoxIncome.TextChanged += new System.EventHandler(this.textSearchIncome_TextChanged);
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Location = new System.Drawing.Point(3, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 18);
+            this.label2.Size = new System.Drawing.Size(161, 18);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Search By Name:";
+            this.label2.Text = "Search By Payment From:";
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Location = new System.Drawing.Point(660, 36);
+            this.button3.Location = new System.Drawing.Point(730, 33);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 33);
             this.button3.TabIndex = 3;
             this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // deleteIncome
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Location = new System.Drawing.Point(477, 36);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 33);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = false;
+            this.deleteIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.deleteIncome.Location = new System.Drawing.Point(547, 33);
+            this.deleteIncome.Name = "deleteIncome";
+            this.deleteIncome.Size = new System.Drawing.Size(158, 33);
+            this.deleteIncome.TabIndex = 2;
+            this.deleteIncome.Text = "Delete";
+            this.deleteIncome.UseVisualStyleBackColor = false;
+            this.deleteIncome.Click += new System.EventHandler(this.deleteIncome_Click);
             // 
             // addIncome
             // 
             this.addIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addIncome.Location = new System.Drawing.Point(298, 36);
+            this.addIncome.Location = new System.Drawing.Point(365, 33);
             this.addIncome.Name = "addIncome";
             this.addIncome.Size = new System.Drawing.Size(158, 33);
             this.addIncome.TabIndex = 1;
@@ -248,7 +249,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(40, 137);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(762, 260);
+            this.dataGridView2.Size = new System.Drawing.Size(831, 260);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -289,7 +290,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.InfoText;
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 40);
+            this.panel1.Size = new System.Drawing.Size(915, 40);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -297,7 +298,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 541);
+            this.ClientSize = new System.Drawing.Size(914, 541);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -334,10 +335,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button addIncome;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deleteIncome;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxIncome;
     }
 }
 

@@ -25,7 +25,7 @@ namespace w1673746.Views
             InitializeComponent();
         }
 
-
+        //reset method
         private void clearFeilds()
         {
             foreach (TextBox textBox in this.Controls.OfType<TextBox>())
@@ -41,22 +41,15 @@ namespace w1673746.Views
             MessageBoxIcon icon = MessageBoxIcon.Information;
             string message = "Add Income Error";
 
-
-            //payment From
-            /* if (string.IsNullOrEmpty(paymentFrom.Text))
-             {
-                 MessageBox.Show("Please enter the Payment Form Field: ", message, okBt, icon);
-                 paymentFrom.Select();
-                 return;
-             }*/
+            //check the datetime field
             if (string.IsNullOrEmpty(dateTimePicker.Text))
             {
                 MessageBox.Show("Please enter the Transaction Date Field: ", message, okBt, icon);
                 dateTimePicker.Select();
                 return;
             }
-
-            if (string.IsNullOrEmpty(amount.Text))
+            //check the amount 
+            if (string.IsNullOrEmpty(amount.Text) || System.Text.RegularExpressions.Regex.IsMatch(amount.Text, "[^0-9]"))
             {
                 MessageBox.Show("Please enter the Amount Field: ", message, okBt, icon);
                 amount.Select();
@@ -67,11 +60,12 @@ namespace w1673746.Views
             result = MessageBox.Show("Do you want to add income information? ", "Save Data & Add Income", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                // DataTable addIncome = incomeModel.executeAddIncome(paymentFrom.Text, lastNameText.Text, phNoText.Text, jobText.Text, addressText.Text, user_id);
-                MessageBox.Show("Successfully Add Contact. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int contactId = (int)comboBoxPaymentFrom.SelectedValue;
+                //Console.WriteLine("Set here Contact ID: " + contactId);
+                incomeModel.executeAddIncome(paymentDes.Text, paymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), user_id, contactId);
+                MessageBox.Show("Successfully Add Income. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
                 this.Hide();
-
             }
         }
 
@@ -91,7 +85,7 @@ namespace w1673746.Views
             DataTable incomeData = incomeModel.executeDisplayPaymentFromList(id);
             comboBoxPaymentFrom.DataSource = incomeData;
             comboBoxPaymentFrom.DisplayMember = "Payment_From";
-            comboBoxPaymentFrom.ValueMember = "Contact_ID";
+            comboBoxPaymentFrom.ValueMember = "contact_ID";
         }
         private void cancelIncome_Click(object sender, EventArgs e)
         {

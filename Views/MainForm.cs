@@ -15,6 +15,7 @@ namespace w1673746
     public partial class MainForm : Form
     {
         static ContactModel cm = new ContactModel();
+        static IncomeModel incomeModel = new IncomeModel();
         private int user_id;
         static String contId;
         public void setId(int id)
@@ -62,11 +63,13 @@ namespace w1673746
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadUserData();
+            loadIncomeData();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
             loadUserData();
+            loadIncomeData();
         }
 
         private void loadUserData()
@@ -84,6 +87,22 @@ namespace w1673746
             dataGridView1.Columns[2].Width = 200;
             dataGridView1.Columns[3].Width = 200;
             dataGridView1.Columns[4].Width = 200;
+        }
+        private void loadIncomeData()
+        {
+            DataTable incomeData = incomeModel.executeAllIncome(user_id);
+            dataGridView2.DataSource = incomeData;
+            dataGridView2.Columns[0].HeaderText = "ID";
+            dataGridView2.Columns[1].HeaderText = "Payment From";
+            dataGridView2.Columns[2].HeaderText = "Payment Description";
+            dataGridView2.Columns[3].HeaderText = "Payment Type";
+            dataGridView2.Columns[4].HeaderText = "Transaction Date";
+            dataGridView2.Columns[5].HeaderText = "Amount";
+            dataGridView2.Columns[0].Width = 200;
+            dataGridView2.Columns[1].Width = 200;
+            dataGridView2.Columns[2].Width = 200;
+            dataGridView2.Columns[3].Width = 200;
+            dataGridView2.Columns[4].Width = 200;
         }
 
         private void deleteBt_Click(object sender, EventArgs e)
@@ -117,6 +136,7 @@ namespace w1673746
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.setId(user_id);
             addContactForm.ShowDialog();
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -137,13 +157,18 @@ namespace w1673746
             contId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             Console.WriteLine("cont id is" + contId);
         }
-
+        //search method in contact
         private void textSearchName_TextChanged(object sender, EventArgs e)
         {
             DataTable contactData = cm.executeSearchContact(textSearchContact.Text);
             dataGridView1.DataSource = contactData;
         }
-
+        // search method in income
+        private void textSearchIncome_TextChanged(object sender, EventArgs e)
+        {
+            DataTable incomeData = incomeModel.executeSearchIncome(textBoxIncome.Text);
+            dataGridView2.DataSource = incomeData;
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -159,8 +184,31 @@ namespace w1673746
             AddIncomeForm incomeForm = new AddIncomeForm();
             incomeForm.setId(user_id);
             Console.WriteLine(user_id);
-            
             incomeForm.ShowDialog();
+        }
+
+        private void deleteIncome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Do you want to delete this income permanently?", "Delete this record", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    incomeModel.executeDeleteIncome(dataGridView2.CurrentRow.Cells[0].Value);
+                    loadIncomeData();
+                    MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+                // and error occured
+            }
         }
     }
 }
