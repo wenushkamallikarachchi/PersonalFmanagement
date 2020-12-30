@@ -96,6 +96,12 @@
     <Compile Include="Views\UpdateContactForm.Designer.cs">
       <DependentUpon>UpdateContactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UpdateExpenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UpdateExpenseForm.Designer.cs">
+      <DependentUpon>UpdateExpenseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UpdateIncomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UpdateContactForm.resx">
       <DependentUpon>UpdateContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateExpenseForm.resx">
+      <DependentUpon>UpdateExpenseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UpdateIncomeForm.resx">
       <DependentUpon>UpdateIncomeForm.cs</DependentUpon>

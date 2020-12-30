@@ -25,6 +25,7 @@ namespace w1673746
         private int user_id;
         static String contId;
         static String incomeId;
+        static String expenseId;
         public void setId(int id)
         {
             user_id = id;
@@ -306,6 +307,20 @@ namespace w1673746
             loadExpenseData();
         }
 
+        private void updateExpense_Click(object sender, EventArgs e)
+        {
+            UpdateExpenseForm updateExpenseForm = new UpdateExpenseForm();
+            updateExpenseForm.setExpense(int.Parse(expenseId));
+            updateExpenseForm.ShowDialog();
+            loadIncomeData();
+        }
 
+        private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            expenseId = dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Console.WriteLine("expense id is" + expenseId);
+        }
+
+        /**end the expenses implementation**/
     }
 }

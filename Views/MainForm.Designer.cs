@@ -291,6 +291,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(822, 258);
             this.dataGridView3.TabIndex = 7;
+            this.dataGridView3.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_RowHeaderMouseClick);
             // 
             // textBoxExpense
             // 
@@ -322,6 +323,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Update";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.updateExpense_Click);
             // 
             // button2
             // 

@@ -39,6 +39,7 @@ namespace w1673746.Models
             DataTable expenseData = Connection.DbConnection.executeSQL(sqlServer);
             return expenseData;
         }
+        //Delete query for expense
         public DataTable executeDeleteExpense(object id)
         {
 
@@ -46,6 +47,13 @@ namespace w1673746.Models
             DataTable expenseData = Connection.DbConnection.executeSQL(sqlServer);
             return expenseData;
 
+        }
+
+        public DataTable executeDisplayExpenseById(int id)
+        {
+            string sqlServer = "SELECT expenseDescription, expenseType,expenseDate, amount, c.first_Name AS Payment_From, i.contact_ID FROM expenseTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE expense_ID = '" + id + "'";
+            DataTable incomeData = Connection.DbConnection.executeSQL(sqlServer);
+            return incomeData;
         }
 
     }

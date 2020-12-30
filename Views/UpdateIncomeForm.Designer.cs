@@ -159,8 +159,9 @@
             this.addIncome.Name = "addIncome";
             this.addIncome.Size = new System.Drawing.Size(148, 33);
             this.addIncome.TabIndex = 22;
-            this.addIncome.Text = "Add";
+            this.addIncome.Text = "Update";
             this.addIncome.UseVisualStyleBackColor = false;
+            this.addIncome.Click += new System.EventHandler(this.updateIncome_Click);
             // 
             // amount
             // 

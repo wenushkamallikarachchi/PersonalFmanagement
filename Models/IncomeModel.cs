@@ -46,6 +46,21 @@ namespace w1673746.Models
             DataTable incomeData = Connection.DbConnection.executeSQL(sqlServer);
             return incomeData;
         }
+
+        public DataTable executeDisplayIncomeById(int id)
+        {
+            string sqlServer = "SELECT paymentDescription, paymentType,IncomeDate, amount, c.first_Name AS Payment_From, i.contact_ID FROM incomeTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE income_ID = '" + id + "'";
+            DataTable incomeData = Connection.DbConnection.executeSQL(sqlServer);
+            return incomeData;
+
+        }
+
+        /* public DataTable executeUpdateIncome()
+         {
+             string incomeSQL = "UPDATE Income SET Description = '" + description + "', Category = '" + category + "', Account = '" + account + "', Transaction_Date = '" + date + "',  Amount = '" + amount + "', Contact_ID = '" + conid + "' WHERE Income_ID = '" + incomeid + "'";
+             DataTable incomeData = Connection.DbConnection.executeSQL(incomeSQL);
+             return incomeData;
+         }*/
     }
 }
 
