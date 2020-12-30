@@ -40,11 +40,17 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBoxIncome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.updateIncome = new System.Windows.Forms.Button();
             this.deleteIncome = new System.Windows.Forms.Button();
             this.addIncome = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.textBoxExpense = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +59,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -78,7 +86,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(838, 463);
+            this.tabPage1.Size = new System.Drawing.Size(907, 463);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -174,7 +182,7 @@
             // 
             this.tabPage3.Controls.Add(this.textBoxIncome);
             this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Controls.Add(this.updateIncome);
             this.tabPage3.Controls.Add(this.deleteIncome);
             this.tabPage3.Controls.Add(this.addIncome);
             this.tabPage3.Controls.Add(this.dataGridView2);
@@ -185,6 +193,7 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Income";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // textBoxIncome
             // 
@@ -206,16 +215,17 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Search By Payment From:";
             // 
-            // button3
+            // updateIncome
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Location = new System.Drawing.Point(730, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 33);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = false;
+            this.updateIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.updateIncome.Location = new System.Drawing.Point(730, 33);
+            this.updateIncome.Name = "updateIncome";
+            this.updateIncome.Size = new System.Drawing.Size(158, 33);
+            this.updateIncome.TabIndex = 3;
+            this.updateIncome.Text = "Update";
+            this.updateIncome.UseVisualStyleBackColor = false;
+            this.updateIncome.Click += new System.EventHandler(this.updateIncome_Click);
             // 
             // deleteIncome
             // 
@@ -252,23 +262,97 @@
             this.dataGridView2.Size = new System.Drawing.Size(831, 260);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dataGridView3);
+            this.tabPage4.Controls.Add(this.textBoxExpense);
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(838, 463);
+            this.tabPage4.Size = new System.Drawing.Size(907, 463);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Expense";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(46, 136);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(822, 258);
+            this.dataGridView3.TabIndex = 7;
+            // 
+            // textBoxExpense
+            // 
+            this.textBoxExpense.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxExpense.Font = new System.Drawing.Font("Open Sans", 11.5F);
+            this.textBoxExpense.Location = new System.Drawing.Point(169, 39);
+            this.textBoxExpense.Name = "textBoxExpense";
+            this.textBoxExpense.Size = new System.Drawing.Size(147, 28);
+            this.textBoxExpense.TabIndex = 6;
+            this.textBoxExpense.TextChanged += new System.EventHandler(this.textSearchExpense_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 18);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Search By Payment To:";
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button4.Location = new System.Drawing.Point(730, 34);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(158, 33);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Update";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Location = new System.Drawing.Point(547, 34);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 33);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Delete";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.deleteExpense);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(365, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(158, 33);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Add Expense";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.addExpense);
             // 
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 31);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(838, 463);
+            this.tabPage5.Size = new System.Drawing.Size(907, 463);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Reports";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -278,7 +362,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 31);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(838, 463);
+            this.tabPage6.Size = new System.Drawing.Size(907, 463);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Prediction";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -313,6 +397,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -336,9 +423,15 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button addIncome;
         private System.Windows.Forms.Button deleteIncome;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button updateIncome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxIncome;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxExpense;
+        private System.Windows.Forms.DataGridView dataGridView3;
     }
 }
 
