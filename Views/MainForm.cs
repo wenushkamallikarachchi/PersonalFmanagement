@@ -70,12 +70,12 @@ namespace w1673746
 
         private void tabPage5_Click(object sender, EventArgs e)
         {
-            loadExpenseData();
+
         }
 
         private void tabPage7_Click(object sender, EventArgs e)
         {
-            loadExpenseData();
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
