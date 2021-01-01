@@ -91,9 +91,7 @@ namespace w1673746
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
-            loadUserData();
-            loadIncomeData();
-            loadExpenseData();
+
         }
         /**Starting the contact implementation**/
         //load all the contact by given id

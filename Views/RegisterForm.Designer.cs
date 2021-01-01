@@ -50,17 +50,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 79);
+            this.label1.Location = new System.Drawing.Point(31, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name:";
-
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameTextBox.Location = new System.Drawing.Point(103, 76);
+            this.firstNameTextBox.Location = new System.Drawing.Point(125, 77);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(164, 28);
             this.firstNameTextBox.TabIndex = 1;
@@ -68,11 +67,12 @@
             // 
             // SignupBt
             // 
-            this.SignupBt.BackColor = System.Drawing.Color.OldLace;
-            this.SignupBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignupBt.Location = new System.Drawing.Point(135, 251);
+            this.SignupBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.SignupBt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignupBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SignupBt.Location = new System.Drawing.Point(109, 241);
             this.SignupBt.Name = "SignupBt";
-            this.SignupBt.Size = new System.Drawing.Size(91, 28);
+            this.SignupBt.Size = new System.Drawing.Size(158, 33);
             this.SignupBt.TabIndex = 2;
             this.SignupBt.Text = "Sign up";
             this.SignupBt.UseVisualStyleBackColor = false;
@@ -82,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(202, 21);
+            this.label2.Location = new System.Drawing.Point(220, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 26);
             this.label2.TabIndex = 3;
@@ -91,7 +91,7 @@
             // mailTextBox
             // 
             this.mailTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mailTextBox.Location = new System.Drawing.Point(103, 122);
+            this.mailTextBox.Location = new System.Drawing.Point(125, 123);
             this.mailTextBox.Name = "mailTextBox";
             this.mailTextBox.Size = new System.Drawing.Size(164, 28);
             this.mailTextBox.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 125);
+            this.label3.Location = new System.Drawing.Point(31, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 4;
@@ -109,7 +109,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.Location = new System.Drawing.Point(103, 167);
+            this.usernameTextBox.Location = new System.Drawing.Point(125, 168);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(164, 28);
             this.usernameTextBox.TabIndex = 7;
@@ -118,7 +118,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 170);
+            this.label4.Location = new System.Drawing.Point(31, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 20);
             this.label4.TabIndex = 6;
@@ -127,7 +127,7 @@
             // passTextBox
             // 
             this.passTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passTextBox.Location = new System.Drawing.Point(398, 167);
+            this.passTextBox.Location = new System.Drawing.Point(420, 168);
             this.passTextBox.Name = "passTextBox";
             this.passTextBox.Size = new System.Drawing.Size(164, 28);
             this.passTextBox.TabIndex = 13;
@@ -136,7 +136,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(304, 170);
+            this.label5.Location = new System.Drawing.Point(326, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 20);
             this.label5.TabIndex = 12;
@@ -145,7 +145,7 @@
             // phNoTextBox
             // 
             this.phNoTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phNoTextBox.Location = new System.Drawing.Point(398, 122);
+            this.phNoTextBox.Location = new System.Drawing.Point(420, 123);
             this.phNoTextBox.Name = "phNoTextBox";
             this.phNoTextBox.Size = new System.Drawing.Size(164, 28);
             this.phNoTextBox.TabIndex = 11;
@@ -154,7 +154,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(304, 125);
+            this.label6.Location = new System.Drawing.Point(326, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 20);
             this.label6.TabIndex = 10;
@@ -163,7 +163,7 @@
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(398, 76);
+            this.lastNameTextBox.Location = new System.Drawing.Point(420, 77);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(164, 28);
             this.lastNameTextBox.TabIndex = 9;
@@ -172,20 +172,20 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(304, 79);
+            this.label7.Location = new System.Drawing.Point(326, 80);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 20);
             this.label7.TabIndex = 8;
             this.label7.Text = "Last Name:";
-
             // 
             // closeBt
             // 
-            this.closeBt.BackColor = System.Drawing.Color.OldLace;
-            this.closeBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeBt.Location = new System.Drawing.Point(367, 251);
+            this.closeBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.closeBt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.closeBt.Location = new System.Drawing.Point(437, 241);
             this.closeBt.Name = "closeBt";
-            this.closeBt.Size = new System.Drawing.Size(91, 28);
+            this.closeBt.Size = new System.Drawing.Size(158, 33);
             this.closeBt.TabIndex = 14;
             this.closeBt.Text = "Close";
             this.closeBt.UseVisualStyleBackColor = false;
@@ -193,11 +193,12 @@
             // 
             // clearBt
             // 
-            this.clearBt.BackColor = System.Drawing.Color.OldLace;
-            this.clearBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearBt.Location = new System.Drawing.Point(252, 251);
+            this.clearBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.clearBt.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.clearBt.Location = new System.Drawing.Point(273, 241);
             this.clearBt.Name = "clearBt";
-            this.clearBt.Size = new System.Drawing.Size(91, 28);
+            this.clearBt.Size = new System.Drawing.Size(158, 33);
             this.clearBt.TabIndex = 15;
             this.clearBt.Text = "Clear";
             this.clearBt.UseVisualStyleBackColor = false;
@@ -207,8 +208,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(574, 349);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
+            this.ClientSize = new System.Drawing.Size(629, 320);
             this.Controls.Add(this.clearBt);
             this.Controls.Add(this.closeBt);
             this.Controls.Add(this.passTextBox);
@@ -225,6 +226,7 @@
             this.Controls.Add(this.SignupBt);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Financial Management | Register Form";
