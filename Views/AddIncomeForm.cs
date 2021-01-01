@@ -62,7 +62,7 @@ namespace w1673746.Views
             {
                 int contactId = (int)comboBoxPaymentFrom.SelectedValue;
                 //Console.WriteLine("Set here Contact ID: " + contactId);
-                incomeModel.executeAddIncome(paymentDes.Text, paymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), user_id, contactId);
+                incomeModel.executeAddIncome(paymentDes.Text, comboBoxAddPaymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), user_id, contactId);
                 MessageBox.Show("Successfully Add Income. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
                 this.Hide();

@@ -18,7 +18,7 @@ namespace w1673746
         static ContactModel contactModel = new ContactModel();
         static IncomeModel incomeModel = new IncomeModel();
         static ExpenseModel expenseModel = new ExpenseModel();
-
+        static ReportModel reportModel = new ReportModel();
 
 
         //varibale initailizing here
@@ -26,6 +26,8 @@ namespace w1673746
         static String contId;
         static String incomeId;
         static String expenseId;
+        String startDate = "";
+        String endDate = "";
 
         public void setId(int id)
         {
@@ -70,7 +72,7 @@ namespace w1673746
 
         private void tabPage5_Click(object sender, EventArgs e)
         {
-
+            loadReportData();
         }
 
         private void tabPage7_Click(object sender, EventArgs e)
@@ -87,6 +89,7 @@ namespace w1673746
             loadUserData();
             loadIncomeData();
             loadExpenseData();
+            loadReportData();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -261,6 +264,7 @@ namespace w1673746
 
 
         }
+        //add function for expenses
         private void addExpense(object sender, EventArgs e)
         {
             AddExpenseForm expenseForm = new AddExpenseForm();
@@ -293,18 +297,18 @@ namespace w1673746
                 // and error occured
             }
         }
-
+        //search function for expense
         private void textSearchExpense_TextChanged(object sender, EventArgs e)
         {
             DataTable expenseData = expenseModel.executeSearchExpense(textBoxExpense.Text);
             dataGridView3.DataSource = expenseData;
         }
-
+        //loadd the expense data by page click
         private void tabPage4_Click(object sender, EventArgs e)
         {
             loadExpenseData();
         }
-
+        //update funtion for expense
         private void updateExpense_Click(object sender, EventArgs e)
         {
             UpdateExpenseForm updateExpenseForm = new UpdateExpenseForm();
@@ -313,7 +317,7 @@ namespace w1673746
             updateExpenseForm.ShowDialog();
             loadExpenseData();
         }
-
+        //load the expense id from the row click
         private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             expenseId = dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -321,5 +325,51 @@ namespace w1673746
         }
 
         /**end the expenses implementation**/
+
+        /**Starting report**/
+        //load all the report by given ID
+        private void loadReportData()
+        {
+            DataTable reportData = reportModel.executeDisplayAllReportData(user_id);
+            dataGridView4.DataSource = reportData;
+            dataGridView4.Columns[0].HeaderText = "Name";
+            dataGridView4.Columns[1].HeaderText = "Type";
+            dataGridView4.Columns[2].HeaderText = "Start Date";
+            dataGridView4.Columns[3].HeaderText = "End Date";
+            dataGridView4.Columns[4].HeaderText = "Created";
+
+        }
+        // create new report funtion
+        private void newReport_Click(object sender, EventArgs e)
+        {
+            NewReport newReport = new NewReport();
+            newReport.setId(user_id);
+            newReport.ShowDialog();
+            loadReportData();
+        }
+
+        private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[2].Value;
+            //endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
+            // loadIncomeSummary(this.user_id, startDate, endDate);
+            //loadExpenseSummary(this.user_id, startDate, endDate);
+        }
+        private void loadIncomeSummary(int user_id, DateTime startDate, DateTime endDate)
+        {
+            DataTable reportData = reportModel.executeGetIncomeSummary(user_id, startDate, endDate);
+            dataGridIncome.DataSource = reportData;
+            dataGridIncome.Columns[0].HeaderText = "Type";
+            dataGridIncome.Columns[1].HeaderText = "Total Amount";
+        }
+
+        private void loadExpenseSummary(int user_id, DateTime startDate, DateTime endDate)
+        {
+            DataTable reportData = reportModel.executeGetExpenseSummary(user_id, startDate, endDate);
+
+            dataGridExpense.DataSource = reportData;
+            dataGridExpense.Columns[0].HeaderText = "Type";
+            dataGridExpense.Columns[1].HeaderText = "Total Amount";
+        }
     }
 }

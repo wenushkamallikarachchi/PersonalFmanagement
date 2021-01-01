@@ -45,19 +45,23 @@
             this.addIncome = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.textBoxExpense = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.newReport = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridIncome = new System.Windows.Forms.DataGridView();
+            this.dataGridExpense = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIncome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridExpense)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -302,6 +308,20 @@
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.button3.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button3.Location = new System.Drawing.Point(437, 34);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(158, 33);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Add Expense";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.addExpense);
+            // 
             // dataGridView3
             // 
             this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -365,9 +385,13 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.label6);
+            this.tabPage5.Controls.Add(this.label5);
+            this.tabPage5.Controls.Add(this.dataGridExpense);
+            this.tabPage5.Controls.Add(this.dataGridIncome);
             this.tabPage5.Controls.Add(this.label4);
             this.tabPage5.Controls.Add(this.button5);
-            this.tabPage5.Controls.Add(this.button1);
+            this.tabPage5.Controls.Add(this.newReport);
             this.tabPage5.Controls.Add(this.dataGridView4);
             this.tabPage5.Location = new System.Drawing.Point(4, 31);
             this.tabPage5.Name = "tabPage5";
@@ -376,6 +400,47 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Reports";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 22);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Past Reports";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(374, 308);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(160, 35);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Generate Report";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // newReport
+            // 
+            this.newReport.Location = new System.Drawing.Point(17, 308);
+            this.newReport.Name = "newReport";
+            this.newReport.Size = new System.Drawing.Size(160, 35);
+            this.newReport.TabIndex = 1;
+            this.newReport.Text = "Create Report";
+            this.newReport.UseVisualStyleBackColor = true;
+            this.newReport.Click += new System.EventHandler(this.newReport_Click);
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(17, 50);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(517, 233);
+            this.dataGridView4.TabIndex = 0;
+            this.dataGridView4.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridReportView_RowHeaderClick);
             // 
             // tabPage6
             // 
@@ -398,55 +463,46 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button3
+            // dataGridIncome
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
-            this.button3.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(437, 34);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(158, 33);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Add Expense";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.addExpense);
+            this.dataGridIncome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridIncome.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
+            this.dataGridIncome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridIncome.Location = new System.Drawing.Point(653, 50);
+            this.dataGridIncome.Name = "dataGridIncome";
+            this.dataGridIncome.Size = new System.Drawing.Size(315, 139);
+            this.dataGridIncome.TabIndex = 4;
             // 
-            // dataGridView4
+            // dataGridExpense
             // 
-            this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(17, 69);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(523, 220);
-            this.dataGridView4.TabIndex = 0;
+            this.dataGridExpense.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridExpense.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
+            this.dataGridExpense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridExpense.Location = new System.Drawing.Point(656, 252);
+            this.dataGridExpense.Name = "dataGridExpense";
+            this.dataGridExpense.Size = new System.Drawing.Size(315, 146);
+            this.dataGridExpense.TabIndex = 5;
             // 
-            // button1
+            // label5
             // 
-            this.button1.Location = new System.Drawing.Point(683, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(653, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 18);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "label5";
             // 
-            // button5
+            // label6
             // 
-            this.button5.Location = new System.Drawing.Point(683, 407);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(160, 35);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 18);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(653, 231);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 18);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "label6";
             // 
             // MainForm
             // 
@@ -473,6 +529,8 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridIncome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridExpense)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -507,8 +565,12 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button newReport;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridIncome;
+        private System.Windows.Forms.DataGridView dataGridExpense;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace w1673746.Models
+{
+    class ReportModel
+    {
+        //load all the report information by given id
+        public DataTable executeDisplayAllReportData(int id)
+        {
+            string sqlServer = "SELECT name,type,start_Date,end_Date,created FROM reportTB WHERE user_ID = '" + id + "'";
+            DataTable reportData = Connection.DbConnection.executeSQL(sqlServer);
+            return reportData;
+        }
+        //add query for report data
+        public DataTable executeAddReportData(string name, string type, DateTime startDate, DateTime endDate, DateTime created, int id)
+        {
+            string reportSQL = string.Empty;
+            reportSQL += "INSERT INTO reportTB (name, type, start_Date, end_Date, created, user_ID)";
+            reportSQL += "VALUES ('" + name + "','" + type + "','" + startDate + "','" + endDate + "','" + created + "','" + id + "')";
+
+            DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
+            return reportData;
+        }
+        //
+
+        public DataTable executeGetIncomeSummary(int id, DateTime startDate, DateTime endDate)
+        {
+            string reportSQL = "SELECT paymentType, SUM(amount) as Total_Amount FROM incomeTB WHERE user_ID = '" + id + "' AND IncomeDate BETWEEN '" + startDate + "' AND '" + endDate + "' group by Category order by Category asc";
+            DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
+            return reportData;
+        }
+
+        public DataTable executeGetExpenseSummary(int id, DateTime startDate, DateTime endDate)
+        {
+            string reportSQL = "SELECT expenseType, SUM(amount) as Total_Amount FROM expenseTB WHERE user_ID = '" + id + "' AND Transaction_Date BETWEEN '" + startDate + "' AND '" + endDate + "' group by Category order by Category asc";
+            DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
+            return reportData;
+        }
+    }
+}

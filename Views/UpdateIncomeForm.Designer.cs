@@ -32,7 +32,6 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.paymentType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.addIncome = new System.Windows.Forms.Button();
             this.amount = new System.Windows.Forms.TextBox();
             this.paymentDes = new System.Windows.Forms.TextBox();
+            this.comboBoxPaymentType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxPaymentFrom
@@ -80,14 +80,6 @@
             this.label7.Size = new System.Drawing.Size(111, 20);
             this.label7.TabIndex = 30;
             this.label7.Text = "Payment Type:";
-            // 
-            // paymentType
-            // 
-            this.paymentType.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paymentType.Location = new System.Drawing.Point(571, 87);
-            this.paymentType.Name = "paymentType";
-            this.paymentType.Size = new System.Drawing.Size(214, 28);
-            this.paymentType.TabIndex = 29;
             // 
             // label1
             // 
@@ -184,17 +176,31 @@
             this.paymentDes.Size = new System.Drawing.Size(214, 28);
             this.paymentDes.TabIndex = 20;
             // 
+            // comboBoxPaymentType
+            // 
+            this.comboBoxPaymentType.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxPaymentType.FormattingEnabled = true;
+            this.comboBoxPaymentType.Items.AddRange(new object[] {
+            "Cash",
+            "Bitcoin",
+            "Cheque",
+            "Bank Transaction"});
+            this.comboBoxPaymentType.Location = new System.Drawing.Point(571, 84);
+            this.comboBoxPaymentType.Name = "comboBoxPaymentType";
+            this.comboBoxPaymentType.Size = new System.Drawing.Size(210, 26);
+            this.comboBoxPaymentType.TabIndex = 34;
+            // 
             // UpdateIncomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
+            this.Controls.Add(this.comboBoxPaymentType);
             this.Controls.Add(this.comboBoxPaymentFrom);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.paymentType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -220,7 +226,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox paymentType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -230,5 +235,6 @@
         private System.Windows.Forms.Button addIncome;
         private System.Windows.Forms.TextBox amount;
         private System.Windows.Forms.TextBox paymentDes;
+        private System.Windows.Forms.ComboBox comboBoxPaymentType;
     }
 }

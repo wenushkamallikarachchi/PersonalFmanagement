@@ -49,7 +49,7 @@ namespace w1673746.Views
                 x = row["Payment_From"].ToString();
                 paymentDes.Text = row["paymentDescription"].ToString();
                 amount.Text = row["amount"].ToString();
-                paymentType.Text = row["paymentType"].ToString();
+                comboBoxPaymentType.Text = row["paymentType"].ToString();
                 dateTimePicker.Text = row["IncomeDate"].ToString();
             }
         }
@@ -70,7 +70,7 @@ namespace w1673746.Views
             {
                 int contactId = (int)comboBoxPaymentFrom.SelectedValue;
 
-                incomeModel.executeUpdateIncome(paymentDes.Text, paymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), contactId, id);
+                incomeModel.executeUpdateIncome(paymentDes.Text, comboBoxPaymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), contactId, id);
 
                 MessageBox.Show("The record has been updated successfully.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

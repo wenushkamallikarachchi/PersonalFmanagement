@@ -47,7 +47,7 @@
             this.nameTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameTextBox.Location = new System.Drawing.Point(101, 25);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(240, 28);
+            this.nameTextBox.Size = new System.Drawing.Size(192, 28);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
@@ -56,7 +56,7 @@
             this.signup.AutoSize = true;
             this.signup.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signup.LinkColor = System.Drawing.Color.White;
-            this.signup.Location = new System.Drawing.Point(59, 184);
+            this.signup.Location = new System.Drawing.Point(-3, 172);
             this.signup.Name = "signup";
             this.signup.Size = new System.Drawing.Size(282, 18);
             this.signup.TabIndex = 3;
@@ -86,10 +86,10 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.Location = new System.Drawing.Point(101, 74);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(240, 28);
+            this.passwordTextBox.Size = new System.Drawing.Size(192, 25);
             this.passwordTextBox.TabIndex = 9;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
@@ -117,9 +117,9 @@
             this.loginBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
             this.loginBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loginBt.Location = new System.Drawing.Point(146, 118);
+            this.loginBt.Location = new System.Drawing.Point(131, 117);
             this.loginBt.Name = "loginBt";
-            this.loginBt.Size = new System.Drawing.Size(158, 33);
+            this.loginBt.Size = new System.Drawing.Size(127, 33);
             this.loginBt.TabIndex = 11;
             this.loginBt.Text = "Login";
             this.loginBt.UseVisualStyleBackColor = false;
@@ -133,9 +133,9 @@
             this.groupBox1.Controls.Add(this.signup);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.nameTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(311, 68);
+            this.groupBox1.Location = new System.Drawing.Point(321, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(358, 205);
+            this.groupBox1.Size = new System.Drawing.Size(348, 205);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
