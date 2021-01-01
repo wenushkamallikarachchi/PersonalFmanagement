@@ -147,8 +147,9 @@
             // 
             // addExpense
             // 
-            this.addExpense.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addExpense.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.addExpense.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.addExpense.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addExpense.Location = new System.Drawing.Point(146, 245);
             this.addExpense.Name = "addExpense";
             this.addExpense.Size = new System.Drawing.Size(148, 33);
@@ -159,8 +160,9 @@
             // 
             // Reset
             // 
-            this.Reset.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Reset.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.Reset.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.Reset.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Reset.Location = new System.Drawing.Point(356, 245);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(148, 33);
@@ -171,8 +173,9 @@
             // 
             // cancel
             // 
-            this.cancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancel.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.cancel.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cancel.Location = new System.Drawing.Point(561, 245);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(148, 33);
@@ -185,6 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.Reset);

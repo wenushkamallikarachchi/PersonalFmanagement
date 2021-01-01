@@ -48,12 +48,22 @@ namespace w1673746.Models
             return expenseData;
 
         }
-
+        //display expense information by given id
         public DataTable executeDisplayExpenseById(int id)
         {
             string sqlServer = "SELECT expenseDescription, expenseType,expenseDate, amount, c.first_Name AS Payment_From, i.contact_ID FROM expenseTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE expense_ID = '" + id + "'";
-            DataTable incomeData = Connection.DbConnection.executeSQL(sqlServer);
-            return incomeData;
+            DataTable expenseData = Connection.DbConnection.executeSQL(sqlServer);
+            return expenseData;
+        }
+
+
+
+        //update expense query
+        public DataTable executeUpdateExpense(string description, string type, DateTime date, float amount, int conId, int expenseId)
+        {
+            string expenseSQL = "UPDATE expenseTB SET expenseDescription = '" + description + "',expenseType ='" + type + "',expenseDate = '" + date + "',  amount = '" + amount + "', contact_ID = '" + conId + "' WHERE expense_ID = '" + expenseId + "'";
+            DataTable expenseData = Connection.DbConnection.executeSQL(expenseSQL);
+            return expenseData;
         }
 
     }

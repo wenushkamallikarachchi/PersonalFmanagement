@@ -15,8 +15,14 @@ namespace w1673746.Views
     {
         ExpenseModel expenseModel = new ExpenseModel();
         public int id;
+        String x = "";
+        public int enteredId;
 
-
+        public void setEnteredId(int id)
+        {
+            enteredId = id;
+            displayPaymentToList(enteredId);
+        }
         public void setExpense(int id)
         {
             this.id = id;
@@ -27,7 +33,14 @@ namespace w1673746.Views
             InitializeComponent();
         }
 
-
+        private void displayPaymentToList(int id)
+        {
+            DataTable incomeData = expenseModel.executeDisplayPaymentToList(id);
+            comboBoxExpense.DataSource = incomeData;
+            comboBoxExpense.DisplayMember = "Payment_From";
+            comboBoxExpense.ValueMember = "Contact_ID";
+            comboBoxExpense.SelectedIndex = comboBoxExpense.FindStringExact(x);
+        }
         private void UpdateExpenseForm_Load(object sender, EventArgs e)
         {
 
@@ -39,7 +52,7 @@ namespace w1673746.Views
 
             foreach (DataRow row in expenseData.Rows)
             {
-                comboBoxExpense.Text = row["contact_ID"].ToString();
+                x = row["Payment_From"].ToString();
                 expenseDescription.Text = row["expenseDescription"].ToString();
                 amountExpense.Text = row["amount"].ToString();
                 expenseType.Text = row["expenseType"].ToString();
@@ -54,7 +67,8 @@ namespace w1673746.Views
 
             if (result == DialogResult.Yes)
             {
-                // incomeModel.executeUpdateExpense(firstNameText.Text, expenseDescription.Text, expenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), this.id);
+                int contactId = (int)comboBoxExpense.SelectedValue;
+                expenseModel.executeUpdateExpense(expenseDescription.Text, expenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), contactId, id);
 
                 MessageBox.Show("The record has been updated successfully.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

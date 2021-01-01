@@ -62,8 +62,9 @@
             // 
             // addIncome
             // 
-            this.addIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.addIncome.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.addIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addIncome.Location = new System.Drawing.Point(158, 243);
             this.addIncome.Name = "addIncome";
             this.addIncome.Size = new System.Drawing.Size(148, 33);
@@ -74,8 +75,9 @@
             // 
             // resetIncome
             // 
-            this.resetIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.resetIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.resetIncome.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.resetIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.resetIncome.Location = new System.Drawing.Point(380, 243);
             this.resetIncome.Name = "resetIncome";
             this.resetIncome.Size = new System.Drawing.Size(148, 33);
@@ -86,8 +88,9 @@
             // 
             // cancelIncome
             // 
-            this.cancelIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.cancelIncome.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancelIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cancelIncome.Location = new System.Drawing.Point(613, 243);
             this.cancelIncome.Name = "cancelIncome";
             this.cancelIncome.Size = new System.Drawing.Size(148, 33);
@@ -130,7 +133,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Proza Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(342, 34);
+            this.label1.Location = new System.Drawing.Point(356, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 11;
@@ -185,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
             this.Controls.Add(this.comboBoxPaymentFrom);
             this.Controls.Add(this.dateTimePicker);

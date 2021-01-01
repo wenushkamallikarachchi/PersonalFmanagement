@@ -26,6 +26,7 @@ namespace w1673746
         static String contId;
         static String incomeId;
         static String expenseId;
+
         public void setId(int id)
         {
             user_id = id;
@@ -57,6 +58,15 @@ namespace w1673746
         {
 
         }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 
         private void tabPage5_Click(object sender, EventArgs e)
         {
@@ -68,6 +78,10 @@ namespace w1673746
             loadExpenseData();
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             loadUserData();
@@ -81,7 +95,8 @@ namespace w1673746
             loadIncomeData();
             loadExpenseData();
         }
-
+        /**Starting the contact implementation**/
+        //load all the contact by given id
         private void loadUserData()
         {
             DataTable userData = contactModel.executeAllUserData(user_id);
@@ -98,7 +113,7 @@ namespace w1673746
             dataGridView1.Columns[4].Width = 200;
         }
 
-
+        //delete method for contact
         private void deleteBt_Click(object sender, EventArgs e)
         {
             try
@@ -122,22 +137,16 @@ namespace w1673746
                 // and error occured
             }
         }
-
+        //add method for contact
         private void addContactBt_Click(object sender, EventArgs e)
         {
-
-
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.setId(user_id);
             addContactForm.ShowDialog();
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        //update method for contact
         private void updateBt_Click(object sender, EventArgs e)
         {
             UpdateContactForm updateContactForm = new UpdateContactForm();
@@ -145,7 +154,7 @@ namespace w1673746
             updateContactForm.ShowDialog();
             loadUserData();
         }
-
+        //set the contact id here
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             contId = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -158,17 +167,7 @@ namespace w1673746
             dataGridView1.DataSource = contactData;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        /***** Income implementation***/
+        /**Starting Income implementation**/
         //load all the income by given id
         private void loadIncomeData()
         {
@@ -204,7 +203,7 @@ namespace w1673746
             // Console.WriteLine(user_id);
             incomeForm.ShowDialog();
         }
-
+        //delete function for income
         private void deleteIncome_Click(object sender, EventArgs e)
         {
             try
@@ -232,6 +231,7 @@ namespace w1673746
         {
             UpdateIncomeForm updateIncome = new UpdateIncomeForm();
             updateIncome.setIncomeId(int.Parse(incomeId));
+            updateIncome.setEnteredId(user_id);
             updateIncome.ShowDialog();
             loadIncomeData();
         }
@@ -270,7 +270,7 @@ namespace w1673746
             Console.WriteLine("set here for expense" + user_id);
             expenseForm.ShowDialog();
         }
-
+        //delete function for expense
         private void deleteExpense(object sender, EventArgs e)
         {
 
@@ -311,8 +311,9 @@ namespace w1673746
         {
             UpdateExpenseForm updateExpenseForm = new UpdateExpenseForm();
             updateExpenseForm.setExpense(int.Parse(expenseId));
+            updateExpenseForm.setEnteredId(user_id);
             updateExpenseForm.ShowDialog();
-            loadIncomeData();
+            loadExpenseData();
         }
 
         private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

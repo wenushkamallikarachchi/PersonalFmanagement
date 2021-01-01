@@ -14,9 +14,15 @@ namespace w1673746.Views
     public partial class UpdateIncomeForm : Form
     {
         IncomeModel incomeModel = new IncomeModel();
+        String x = "";
         public int id;
+        public int enteredId;
 
-
+        public void setEnteredId(int id)
+        {
+            enteredId = id;
+            displayPaymentFromList(enteredId);
+        }
         public void setIncomeId(int id)
         {
             this.id = id;
@@ -26,13 +32,21 @@ namespace w1673746.Views
         {
             InitializeComponent();
         }
+        private void displayPaymentFromList(int id)
+        {
+            DataTable incomeData = incomeModel.executeDisplayPaymentFromList(id);
+            comboBoxPaymentFrom.DataSource = incomeData;
+            comboBoxPaymentFrom.DisplayMember = "Payment_From";
+            comboBoxPaymentFrom.ValueMember = "Contact_ID";
+            comboBoxPaymentFrom.SelectedIndex = comboBoxPaymentFrom.FindStringExact(x);
+        }
         private void displayIncomeDetails(int id)
         {
             DataTable incomeData = incomeModel.executeDisplayIncomeById(id);
 
             foreach (DataRow row in incomeData.Rows)
             {
-                comboBoxPaymentFrom.Text = row["contact_ID"].ToString();
+                x = row["Payment_From"].ToString();
                 paymentDes.Text = row["paymentDescription"].ToString();
                 amount.Text = row["amount"].ToString();
                 paymentType.Text = row["paymentType"].ToString();
@@ -54,7 +68,9 @@ namespace w1673746.Views
 
             if (result == DialogResult.Yes)
             {
-                // incomeModel.executeUpdateIncome(firstNameText.Text, paymentDes.Text, amount.Text, paymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), this.id);
+                int contactId = (int)comboBoxPaymentFrom.SelectedValue;
+
+                incomeModel.executeUpdateIncome(paymentDes.Text, paymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), contactId, id);
 
                 MessageBox.Show("The record has been updated successfully.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

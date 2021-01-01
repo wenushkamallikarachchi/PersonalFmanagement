@@ -131,8 +131,10 @@
             // 
             // cancelIncome
             // 
-            this.cancelIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.cancelIncome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cancelIncome.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancelIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cancelIncome.Location = new System.Drawing.Point(604, 246);
             this.cancelIncome.Name = "cancelIncome";
             this.cancelIncome.Size = new System.Drawing.Size(148, 33);
@@ -142,8 +144,9 @@
             // 
             // resetIncome
             // 
-            this.resetIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.resetIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.resetIncome.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.resetIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.resetIncome.Location = new System.Drawing.Point(371, 246);
             this.resetIncome.Name = "resetIncome";
             this.resetIncome.Size = new System.Drawing.Size(148, 33);
@@ -153,12 +156,14 @@
             // 
             // addIncome
             // 
-            this.addIncome.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.addIncome.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addIncome.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addIncome.Location = new System.Drawing.Point(149, 246);
             this.addIncome.Name = "addIncome";
             this.addIncome.Size = new System.Drawing.Size(148, 33);
             this.addIncome.TabIndex = 22;
+            this.addIncome.TabStop = false;
             this.addIncome.Text = "Update";
             this.addIncome.UseVisualStyleBackColor = false;
             this.addIncome.Click += new System.EventHandler(this.updateIncome_Click);
@@ -183,6 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
             this.Controls.Add(this.comboBoxPaymentFrom);
             this.Controls.Add(this.dateTimePicker);
@@ -198,9 +204,10 @@
             this.Controls.Add(this.addIncome);
             this.Controls.Add(this.amount);
             this.Controls.Add(this.paymentDes);
+            this.MaximizeBox = false;
             this.Name = "UpdateIncomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UpdateIncomeForm";
+            this.Text = "Personal Financial Management | Update Income";
             this.Load += new System.EventHandler(this.UpdateIncomeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

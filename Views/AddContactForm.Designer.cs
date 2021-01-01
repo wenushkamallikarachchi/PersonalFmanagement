@@ -131,8 +131,9 @@
             // 
             // addContactBt
             // 
-            this.addContactBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.addContactBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addContactBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.addContactBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.addContactBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addContactBt.Location = new System.Drawing.Point(72, 244);
             this.addContactBt.Name = "addContactBt";
             this.addContactBt.Size = new System.Drawing.Size(158, 33);
@@ -143,8 +144,9 @@
             // 
             // cancelBt
             // 
-            this.cancelBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.cancelBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancelBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cancelBt.Location = new System.Drawing.Point(474, 244);
             this.cancelBt.Name = "cancelBt";
             this.cancelBt.Size = new System.Drawing.Size(158, 33);
@@ -155,8 +157,9 @@
             // 
             // resetBt
             // 
-            this.resetBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.resetBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.resetBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.resetBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.resetBt.Location = new System.Drawing.Point(268, 244);
             this.resetBt.Name = "resetBt";
             this.resetBt.Size = new System.Drawing.Size(158, 33);
@@ -185,6 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(684, 311);
             this.Controls.Add(this.addressText);
             this.Controls.Add(this.phNoText);

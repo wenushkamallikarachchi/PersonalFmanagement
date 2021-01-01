@@ -62,8 +62,9 @@
             // 
             // resetBt
             // 
-            this.resetBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.resetBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.resetBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.resetBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.resetBt.Location = new System.Drawing.Point(276, 246);
             this.resetBt.Name = "resetBt";
             this.resetBt.Size = new System.Drawing.Size(158, 33);
@@ -74,8 +75,9 @@
             // 
             // cancelBt
             // 
-            this.cancelBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.cancelBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.cancelBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.cancelBt.Location = new System.Drawing.Point(482, 246);
             this.cancelBt.Name = "cancelBt";
             this.cancelBt.Size = new System.Drawing.Size(158, 33);
@@ -85,8 +87,9 @@
             // 
             // updateContactBt
             // 
-            this.updateContactBt.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.updateContactBt.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateContactBt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.updateContactBt.Font = new System.Drawing.Font("Open Sans", 10.25F, System.Drawing.FontStyle.Bold);
+            this.updateContactBt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.updateContactBt.Location = new System.Drawing.Point(80, 246);
             this.updateContactBt.Name = "updateContactBt";
             this.updateContactBt.Size = new System.Drawing.Size(158, 33);
@@ -155,7 +158,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Proza Libre", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(298, 32);
+            this.label2.Location = new System.Drawing.Point(281, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 21;
@@ -183,6 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(684, 311);
             this.Controls.Add(this.addressText);
             this.Controls.Add(this.phNoText);
@@ -201,7 +205,7 @@
             this.Location = new System.Drawing.Point(474, 244);
             this.Name = "UpdateContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Personal Financial Management | Update Contact Form";
+            this.Text = "Personal Financial Management | Update Contact";
             this.Load += new System.EventHandler(this.UpdateContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
