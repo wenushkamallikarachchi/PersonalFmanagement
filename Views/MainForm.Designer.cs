@@ -30,17 +30,20 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.incomeOverviewText = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cartesianChart = new LiveCharts.WinForms.CartesianChart();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pieChartExpense = new LiveCharts.WinForms.PieChart();
             this.pieChartIncome = new LiveCharts.WinForms.PieChart();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.totalExpense = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.totalIncome = new System.Windows.Forms.Label();
+            this.totalDashIncome = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -51,6 +54,8 @@
             this.deleteBt = new System.Windows.Forms.Button();
             this.textSearchContact = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.totIncome = new System.Windows.Forms.Label();
+            this.allIncome = new System.Windows.Forms.Label();
             this.textBoxIncome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.updateIncome = new System.Windows.Forms.Button();
@@ -58,6 +63,8 @@
             this.addIncome = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.totExpense = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.textBoxExpense = new System.Windows.Forms.TextBox();
@@ -74,13 +81,21 @@
             this.newReport = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.textBoxPredict = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.predict = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.incomeVsExpense = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -93,6 +108,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExpense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridIncome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -111,25 +128,54 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(35, 5);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1009, 521);
+            this.tabControl1.Size = new System.Drawing.Size(1009, 510);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.incomeVsExpense);
+            this.tabPage1.Controls.Add(this.incomeOverviewText);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.cartesianChart);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.pieChartExpense);
             this.tabPage1.Controls.Add(this.pieChartIncome);
             this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage1.Size = new System.Drawing.Size(1001, 475);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
+            // 
+            // incomeOverviewText
+            // 
+            this.incomeOverviewText.AutoSize = true;
+            this.incomeOverviewText.Location = new System.Drawing.Point(90, 320);
+            this.incomeOverviewText.Name = "incomeOverviewText";
+            this.incomeOverviewText.Size = new System.Drawing.Size(0, 18);
+            this.incomeOverviewText.TabIndex = 7;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(442, 196);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(141, 20);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Income Vs Expense";
+            // 
+            // cartesianChart
+            // 
+            this.cartesianChart.Location = new System.Drawing.Point(285, 249);
+            this.cartesianChart.Name = "cartesianChart";
+            this.cartesianChart.Size = new System.Drawing.Size(448, 218);
+            this.cartesianChart.TabIndex = 5;
+            this.cartesianChart.Text = "cartesianChart1";
             // 
             // label10
             // 
@@ -153,7 +199,7 @@
             // 
             // pieChartExpense
             // 
-            this.pieChartExpense.Location = new System.Drawing.Point(752, 219);
+            this.pieChartExpense.Location = new System.Drawing.Point(755, 249);
             this.pieChartExpense.Name = "pieChartExpense";
             this.pieChartExpense.Size = new System.Drawing.Size(243, 189);
             this.pieChartExpense.TabIndex = 4;
@@ -161,7 +207,7 @@
             // 
             // pieChartIncome
             // 
-            this.pieChartIncome.Location = new System.Drawing.Point(6, 219);
+            this.pieChartIncome.Location = new System.Drawing.Point(3, 235);
             this.pieChartIncome.Name = "pieChartIncome";
             this.pieChartIncome.Size = new System.Drawing.Size(243, 189);
             this.pieChartIncome.TabIndex = 3;
@@ -169,7 +215,8 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(167)))), ((int)(((byte)(152)))));
+            this.panel4.Controls.Add(this.totalExpense);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(696, 29);
@@ -177,59 +224,41 @@
             this.panel4.Size = new System.Drawing.Size(239, 110);
             this.panel4.TabIndex = 2;
             // 
+            // totalExpense
+            // 
+            this.totalExpense.AutoSize = true;
+            this.totalExpense.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalExpense.Location = new System.Drawing.Point(116, 36);
+            this.totalExpense.Name = "totalExpense";
+            this.totalExpense.Size = new System.Drawing.Size(51, 20);
+            this.totalExpense.TabIndex = 4;
+            this.totalExpense.Text = "label8";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(67, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 20);
+            this.label9.Size = new System.Drawing.Size(125, 20);
             this.label9.TabIndex = 3;
             this.label9.Text = "Total Expenses";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::w1673746.Properties.Resources.expense;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 36);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 23);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 48);
+            this.pictureBox2.Size = new System.Drawing.Size(95, 49);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(379, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 110);
-            this.panel3.TabIndex = 2;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(92, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 20);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Total Contacts";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::w1673746.Properties.Resources.identification;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 35);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 49);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(167)))), ((int)(((byte)(152)))));
+            this.panel2.Controls.Add(this.totalIncome);
+            this.panel2.Controls.Add(this.totalDashIncome);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(55, 29);
@@ -237,20 +266,40 @@
             this.panel2.Size = new System.Drawing.Size(239, 110);
             this.panel2.TabIndex = 1;
             // 
+            // totalIncome
+            // 
+            this.totalIncome.AutoSize = true;
+            this.totalIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalIncome.Location = new System.Drawing.Point(101, 36);
+            this.totalIncome.Name = "totalIncome";
+            this.totalIncome.Size = new System.Drawing.Size(51, 20);
+            this.totalIncome.TabIndex = 5;
+            this.totalIncome.Text = "label8";
+            // 
+            // totalDashIncome
+            // 
+            this.totalDashIncome.AutoSize = true;
+            this.totalDashIncome.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDashIncome.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.totalDashIncome.Location = new System.Drawing.Point(144, 51);
+            this.totalDashIncome.Name = "totalDashIncome";
+            this.totalDashIncome.Size = new System.Drawing.Size(0, 20);
+            this.totalDashIncome.TabIndex = 2;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(83, 0);
+            this.label7.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(64, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 20);
+            this.label7.Size = new System.Drawing.Size(110, 20);
             this.label7.TabIndex = 1;
             this.label7.Text = "Total Income";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::w1673746.Properties.Resources.income;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 35);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(95, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -269,7 +318,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage2.Size = new System.Drawing.Size(1001, 475);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Contacts";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -353,6 +402,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.totIncome);
+            this.tabPage3.Controls.Add(this.allIncome);
             this.tabPage3.Controls.Add(this.textBoxIncome);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.updateIncome);
@@ -362,11 +413,28 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage3.Size = new System.Drawing.Size(1001, 475);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Income";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // totIncome
+            // 
+            this.totIncome.AutoSize = true;
+            this.totIncome.Location = new System.Drawing.Point(876, 412);
+            this.totIncome.Name = "totIncome";
+            this.totIncome.Size = new System.Drawing.Size(0, 18);
+            this.totIncome.TabIndex = 7;
+            // 
+            // allIncome
+            // 
+            this.allIncome.AutoSize = true;
+            this.allIncome.Location = new System.Drawing.Point(745, 412);
+            this.allIncome.Name = "allIncome";
+            this.allIncome.Size = new System.Drawing.Size(89, 18);
+            this.allIncome.TabIndex = 6;
+            this.allIncome.Text = "Total Income:";
             // 
             // textBoxIncome
             // 
@@ -446,6 +514,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.totExpense);
+            this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.button3);
             this.tabPage4.Controls.Add(this.dataGridView3);
             this.tabPage4.Controls.Add(this.textBoxExpense);
@@ -455,11 +525,29 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage4.Size = new System.Drawing.Size(1001, 475);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Expense";
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // totExpense
+            // 
+            this.totExpense.AutoSize = true;
+            this.totExpense.Location = new System.Drawing.Point(873, 407);
+            this.totExpense.Name = "totExpense";
+            this.totExpense.Size = new System.Drawing.Size(50, 18);
+            this.totExpense.TabIndex = 10;
+            this.totExpense.Text = "label12";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(773, 407);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(94, 18);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Total Expense:";
             // 
             // button3
             // 
@@ -548,7 +636,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 31);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage5.Size = new System.Drawing.Size(1001, 475);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Reports";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -632,13 +720,110 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.pictureBox4);
+            this.tabPage6.Controls.Add(this.textBoxPredict);
+            this.tabPage6.Controls.Add(this.label17);
+            this.tabPage6.Controls.Add(this.label16);
+            this.tabPage6.Controls.Add(this.label15);
+            this.tabPage6.Controls.Add(this.label14);
+            this.tabPage6.Controls.Add(this.predict);
+            this.tabPage6.Controls.Add(this.dateTimePicker2);
+            this.tabPage6.Controls.Add(this.dateTimePickerEnd);
             this.tabPage6.Location = new System.Drawing.Point(4, 31);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1001, 486);
+            this.tabPage6.Size = new System.Drawing.Size(1001, 475);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Prediction";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::w1673746.Properties.Resources.pexels_lukas_590022;
+            this.pictureBox4.Location = new System.Drawing.Point(565, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(417, 445);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // textBoxPredict
+            // 
+            this.textBoxPredict.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPredict.Location = new System.Drawing.Point(154, 298);
+            this.textBoxPredict.Name = "textBoxPredict";
+            this.textBoxPredict.Size = new System.Drawing.Size(145, 28);
+            this.textBoxPredict.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(23, 303);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(125, 18);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "Prediction Expense:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Gilroy ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.Location = new System.Drawing.Point(95, 38);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(356, 20);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Expense Prediction for upcoming weeks or days";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(285, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(74, 18);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "End Date:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(23, 107);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 18);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Start Date:";
+            // 
+            // predict
+            // 
+            this.predict.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(152)))), ((int)(((byte)(114)))));
+            this.predict.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.predict.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.predict.Location = new System.Drawing.Point(183, 196);
+            this.predict.Name = "predict";
+            this.predict.Size = new System.Drawing.Size(141, 40);
+            this.predict.TabIndex = 3;
+            this.predict.Text = "Predict";
+            this.predict.UseVisualStyleBackColor = false;
+            this.predict.Click += new System.EventHandler(this.predict_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(26, 128);
+            this.dateTimePicker2.MaxDate = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
+            this.dateTimePicker2.MinDate = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(239, 25);
+            this.dateTimePicker2.TabIndex = 2;
+            this.dateTimePicker2.Value = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
+            // 
+            // dateTimePickerEnd
+            // 
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(288, 128);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(243, 25);
+            this.dateTimePickerEnd.TabIndex = 1;
             // 
             // panel1
             // 
@@ -650,11 +835,19 @@
             this.panel1.Size = new System.Drawing.Size(1009, 40);
             this.panel1.TabIndex = 1;
             // 
+            // incomeVsExpense
+            // 
+            this.incomeVsExpense.AutoSize = true;
+            this.incomeVsExpense.Location = new System.Drawing.Point(460, 350);
+            this.incomeVsExpense.Name = "incomeVsExpense";
+            this.incomeVsExpense.Size = new System.Drawing.Size(0, 18);
+            this.incomeVsExpense.TabIndex = 8;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 564);
+            this.ClientSize = new System.Drawing.Size(1008, 553);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -669,9 +862,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -689,6 +879,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridExpense)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridIncome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -730,18 +923,35 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private LiveCharts.WinForms.PieChart pieChartIncome;
         private LiveCharts.WinForms.PieChart pieChartExpense;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private LiveCharts.WinForms.CartesianChart cartesianChart;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button predict;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBoxPredict;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label allIncome;
+        private System.Windows.Forms.Label totIncome;
+        private System.Windows.Forms.Label totalDashIncome;
+        private System.Windows.Forms.Label totalExpense;
+        private System.Windows.Forms.Label totalIncome;
+        private System.Windows.Forms.Label totExpense;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label incomeOverviewText;
+        private System.Windows.Forms.Label incomeVsExpense;
     }
 }
 

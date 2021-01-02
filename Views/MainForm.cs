@@ -22,6 +22,7 @@ namespace w1673746
         static ExpenseModel expenseModel = new ExpenseModel();
         static ReportModel reportModel = new ReportModel();
         static DashBoardModel dashModel = new DashBoardModel();
+        static PredictionModel predictModel = new PredictionModel();
 
         //varibale initailizing here
         private int user_id;
@@ -30,6 +31,8 @@ namespace w1673746
         static String expenseId;
         DateTime startDate;
         DateTime endDate;
+        DateTime predictStartDate = DateTime.Today;
+        DateTime predictEndDate = DateTime.Today.AddDays(-28);
 
         public void setId(int id)
         {
@@ -91,11 +94,14 @@ namespace w1673746
             loadReportData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadIncomeExpenseChart();
+            loadTotalIncome();
+            loadTotalExpense();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
-
+            loadUserData();
         }
         /**Starting the contact implementation**/
         //load all the contact by given id
@@ -145,7 +151,7 @@ namespace w1673746
             AddContactForm addContactForm = new AddContactForm();
             addContactForm.setId(user_id);
             addContactForm.ShowDialog();
-
+            loadUserData();
         }
 
         //update method for contact
@@ -168,6 +174,7 @@ namespace w1673746
             DataTable contactData = contactModel.executeSearchContact(textSearchContact.Text);
             dataGridView1.DataSource = contactData;
         }
+        /**Ending the contact implementation **/
 
         /**Starting Income implementation**/
         //load all the income by given id
@@ -198,6 +205,7 @@ namespace w1673746
             loadIncomeData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadTotalIncome();
         }
 
         private void addIncome_Click(object sender, EventArgs e)
@@ -206,6 +214,9 @@ namespace w1673746
             incomeForm.setId(user_id);
             // Console.WriteLine(user_id);
             incomeForm.ShowDialog();
+            loadIncomeData();
+            loadTotalIncome();
+            loadIncomeTypeOverviewChart();
         }
         //delete function for income
         private void deleteIncome_Click(object sender, EventArgs e)
@@ -216,6 +227,7 @@ namespace w1673746
                 {
 
                     incomeModel.executeDeleteIncome(dataGridView2.CurrentRow.Cells[0].Value);
+                    loadIncomeTypeOverviewChart();
                     loadIncomeData();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -240,11 +252,23 @@ namespace w1673746
             loadIncomeData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadTotalIncome();
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             incomeId = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
             Console.WriteLine("income id is" + incomeId);
+        }
+        //load all the income for dashboard and income tab
+        private void loadTotalIncome()
+        {
+            int sum = 0;
+            for (int i = 0; i < dataGridView2.Rows.Count; ++i)
+            {
+                sum += Convert.ToInt32(dataGridView2.Rows[i].Cells[5].Value);
+            }
+            totalIncome.Text = sum.ToString();
+            totIncome.Text = sum.ToString();
         }
 
         /**end the income implementation**/
@@ -266,6 +290,7 @@ namespace w1673746
             dataGridView3.Columns[2].Width = 200;
             dataGridView3.Columns[3].Width = 200;
             dataGridView3.Columns[4].Width = 200;
+            dataGridView3.Columns[5].Width = 180;
 
 
         }
@@ -276,6 +301,8 @@ namespace w1673746
             expenseForm.setId(user_id);
             Console.WriteLine("set here for expense" + user_id);
             expenseForm.ShowDialog();
+            loadExpenseData();
+            loadTotalExpense();
         }
         //delete function for expense
         private void deleteExpense(object sender, EventArgs e)
@@ -288,6 +315,7 @@ namespace w1673746
 
                     expenseModel.executeDeleteExpense(dataGridView3.CurrentRow.Cells[0].Value);
                     loadExpenseData();
+                    loadTotalExpense();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -314,6 +342,7 @@ namespace w1673746
             loadExpenseData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadTotalExpense();
         }
         //update funtion for expense
         private void updateExpense_Click(object sender, EventArgs e)
@@ -325,12 +354,25 @@ namespace w1673746
             loadExpenseData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadTotalExpense();
         }
         //load the expense id from the row click
         private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             expenseId = dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString();
             Console.WriteLine("expense id is" + expenseId);
+        }
+        private void loadTotalExpense()
+        {
+            int sum = 0;
+            for (int i = 0; i < dataGridView3.Rows.Count; ++i)
+            {
+                sum += Convert.ToInt32(dataGridView3.Rows[i].Cells[5].Value);
+            }
+            //dashboard label
+            totalExpense.Text = sum.ToString();
+            //Tab label
+            totExpense.Text = sum.ToString();
         }
 
         /**end the expenses implementation**/
@@ -414,7 +456,10 @@ namespace w1673746
 
                 pieChartIncome.LegendLocation = LegendLocation.Bottom;
             }
-            //else { }
+            else
+            {
+                incomeOverviewText.Text = "You have to add atleast one income.";
+            }
 
         }
         //dashboard expense type overview pie chart
@@ -442,6 +487,94 @@ namespace w1673746
                 pieChartExpense.LegendLocation = LegendLocation.Bottom;
             }
             //else { }
+
+
+
+
+        }
+        private void loadIncomeExpenseChart()
+        {
+            DataTable incomeData = dashModel.getTotalIncomes(user_id);
+            DataTable expenseData = dashModel.getTotalExpenses(user_id);
+            if (expenseData.Rows.Count > 0 || incomeData.Rows.Count > 0)
+            {
+                cartesianChart.Series = new SeriesCollection();
+                ColumnSeries colSeriesIncomeObj = new ColumnSeries
+                {
+                    Title = "Income",
+                    Values = new ChartValues<double> { }
+                };
+
+                foreach (DataRow dr in incomeData.Rows)
+                {
+                    colSeriesIncomeObj.Values.Add(double.Parse(dr["Total"].ToString()));
+                }
+
+                ColumnSeries colSeriesExpenseObj = new ColumnSeries
+                {
+                    Title = "Expense",
+                    Values = new ChartValues<double> { }
+                };
+
+                foreach (DataRow dr in expenseData.Rows)
+                {
+                    colSeriesExpenseObj.Values.Add(double.Parse(dr["Total"].ToString()));
+                }
+
+                //adding series will update and animate the chart automatically
+                cartesianChart.Series.Add(colSeriesIncomeObj);
+                cartesianChart.Series.Add(colSeriesExpenseObj);
+
+                cartesianChart.AxisX.Add(
+                 new Axis
+                 {
+                     Title = "Years",
+                     Labels = new[] { "2020", "2021" }
+                 });
+
+                cartesianChart.AxisY.Add(new Axis
+                {
+                    Title = "Total",
+                    LabelFormatter = value => value.ToString("N")
+                });
+            }
+
+            else
+            {
+                incomeVsExpense.Text = "You have to add atleast one income or expense";
+            }
+
+
+
+        }
+        //Starting the Prediction
+        private int averageExpenditure()
+        {
+            int expense = 0;
+            DataTable expenseData = predictModel.executeGetTotalExpensesDateRange(user_id, predictEndDate, predictStartDate);
+
+            foreach (DataRow row in expenseData.Rows)
+            {
+                expense = int.Parse(row["Total"].ToString());
+            }
+            int average = expense / 28;
+            return average;
+        }
+
+        private void predict_Click(object sender, EventArgs e)
+        {
+            int average = averageExpenditure();
+
+
+            endDate = dateTimePickerEnd.Value;
+            String data = (endDate - predictStartDate).TotalDays.ToString();
+            Console.WriteLine("Data is" + data);
+            float date = float.Parse(data);
+            float predictExpense = average * date;
+            textBoxPredict.Text = predictExpense.ToString();
+
+
+
         }
     }
 }

@@ -28,11 +28,24 @@ namespace w1673746.Views
 
         private void NewReport_Load(object sender, EventArgs e)
         {
-
+            comboBoxType.SelectedItem = null;
+            comboBoxType.SelectedText = "PDF";
         }
 
         private void createReport_Click(object sender, EventArgs e)
         {
+            MessageBoxButtons okBt = MessageBoxButtons.OK;
+            MessageBoxIcon icon = MessageBoxIcon.Information;
+            string message = "Add Contact Error";
+
+
+            //report name
+            if (string.IsNullOrEmpty(reportName.Text))
+            {
+                MessageBox.Show("Please enter the report name: ", message, okBt, icon);
+                reportName.Select();
+                return;
+            }
             DialogResult result;
             result = MessageBox.Show("Do you want to save the record?", "Save Data & Create New Report", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

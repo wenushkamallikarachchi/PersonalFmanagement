@@ -68,6 +68,7 @@
     <Compile Include="Models\ExpenseModel.cs" />
     <Compile Include="Models\IncomeModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PredictionModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Views\AddContactForm.cs">
       <SubType>Form</SubType>
@@ -199,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\identification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pexels-lukas-590022.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

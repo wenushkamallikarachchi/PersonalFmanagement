@@ -103,6 +103,16 @@ namespace w1673746.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pexels_lukas_590022 {
+            get {
+                object obj = ResourceManager.GetObject("pexels-lukas-590022", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wenushka {
             get {
                 object obj = ResourceManager.GetObject("wenushka", resourceCulture);
