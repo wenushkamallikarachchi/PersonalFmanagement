@@ -58,6 +58,8 @@ namespace w1673746.Views
         private void UpdateIncomeForm_Load(object sender, EventArgs e)
         {
 
+            //   comboBoxPaymentType.SelectedItem = null;
+            //   comboBoxPaymentType.SelectedText = "Cash";
         }
 
         private void updateIncome_Click(object sender, EventArgs e)

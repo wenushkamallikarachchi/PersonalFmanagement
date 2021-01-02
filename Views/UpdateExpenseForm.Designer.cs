@@ -32,7 +32,6 @@
             this.Reset = new System.Windows.Forms.Button();
             this.addExpense = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.expenseType = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.expenseDescription = new System.Windows.Forms.TextBox();
             this.comboBoxExpense = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cancel
@@ -91,23 +91,15 @@
             this.label4.TabIndex = 38;
             this.label4.Text = "Transaction Date*:";
             // 
-            // expenseType
-            // 
-            this.expenseType.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expenseType.Location = new System.Drawing.Point(538, 70);
-            this.expenseType.Name = "expenseType";
-            this.expenseType.Size = new System.Drawing.Size(251, 28);
-            this.expenseType.TabIndex = 37;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(393, 73);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 20);
+            this.label7.Size = new System.Drawing.Size(107, 20);
             this.label7.TabIndex = 36;
-            this.label7.Text = "Payment Type:";
+            this.label7.Text = "Expense Type:";
             // 
             // label3
             // 
@@ -182,17 +174,34 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "Update Expense";
             // 
+            // comboBoxType
+            // 
+            this.comboBoxType.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
+            "Rent",
+            "Property taxes ",
+            "Utility bills",
+            "Lease / car loan payment.",
+            "Vehicle insurance",
+            "Transport",
+            "Food"});
+            this.comboBoxType.Location = new System.Drawing.Point(538, 67);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(251, 26);
+            this.comboBoxType.TabIndex = 42;
+            // 
             // UpdateExpenseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
+            this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.addExpense);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.expenseType);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
@@ -218,7 +227,6 @@
         private System.Windows.Forms.Button Reset;
         private System.Windows.Forms.Button addExpense;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox expenseType;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
@@ -228,5 +236,6 @@
         private System.Windows.Forms.TextBox expenseDescription;
         private System.Windows.Forms.ComboBox comboBoxExpense;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxType;
     }
 }

@@ -55,7 +55,7 @@ namespace w1673746.Views
                 x = row["Payment_From"].ToString();
                 expenseDescription.Text = row["expenseDescription"].ToString();
                 amountExpense.Text = row["amount"].ToString();
-                expenseType.Text = row["expenseType"].ToString();
+                comboBoxType.Text = row["expenseType"].ToString();
                 dateTimePickerExpense.Text = row["expenseDate"].ToString();
             }
         }
@@ -68,7 +68,7 @@ namespace w1673746.Views
             if (result == DialogResult.Yes)
             {
                 int contactId = (int)comboBoxExpense.SelectedValue;
-                expenseModel.executeUpdateExpense(expenseDescription.Text, expenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), contactId, id);
+                expenseModel.executeUpdateExpense(expenseDescription.Text, comboBoxType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), contactId, id);
 
                 MessageBox.Show("The record has been updated successfully.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

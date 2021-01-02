@@ -27,6 +27,8 @@ namespace w1673746.Views
 
         private void AddExpenseForm_Load(object sender, EventArgs e)
         {
+            comboBoxExpenseType.SelectedItem = null;
+            comboBoxExpenseType.SelectedText = "Rent";
 
         }
         //reset method
@@ -64,7 +66,7 @@ namespace w1673746.Views
             {
                 int contactId = (int)comboBoxExpense.SelectedValue;
                 //Console.WriteLine("Set here Contact ID: " + contactId);
-                expenseModel.executeAddExpense(expenseDescription.Text, expenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), user_id, contactId);
+                expenseModel.executeAddExpense(expenseDescription.Text, comboBoxExpenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), user_id, contactId);
                 MessageBox.Show("Successfully Add Expense. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clearFeilds();
                 this.Hide();

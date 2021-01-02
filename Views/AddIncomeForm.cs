@@ -78,6 +78,8 @@ namespace w1673746.Views
         private void AddIncomeForm_Load(object sender, EventArgs e)
         {
             comboBoxPaymentFrom.Select();
+            comboBoxAddPaymentType.SelectedItem = null;
+            comboBoxAddPaymentType.SelectedText = "Cash";
 
         }
         private void displayPaymentFromList(int id)

@@ -30,14 +30,14 @@ namespace w1673746.Models
 
         public DataTable executeGetIncomeSummary(int id, DateTime startDate, DateTime endDate)
         {
-            string reportSQL = "SELECT paymentType, SUM(amount) as Total_Amount FROM incomeTB WHERE user_ID = '" + id + "' AND IncomeDate BETWEEN '" + startDate + "' AND '" + endDate + "' group by Category order by Category asc";
+            string reportSQL = "SELECT paymentType, SUM(amount) as Total_Amount FROM incomeTB WHERE user_ID = '" + id + "' AND IncomeDate BETWEEN '" + startDate + "' AND '" + endDate + "' group by paymentType order by paymentType asc";
             DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
             return reportData;
         }
 
         public DataTable executeGetExpenseSummary(int id, DateTime startDate, DateTime endDate)
         {
-            string reportSQL = "SELECT expenseType, SUM(amount) as Total_Amount FROM expenseTB WHERE user_ID = '" + id + "' AND Transaction_Date BETWEEN '" + startDate + "' AND '" + endDate + "' group by Category order by Category asc";
+            string reportSQL = "SELECT expenseType, SUM(amount) as Total_Amount FROM expenseTB WHERE user_ID = '" + id + "' AND expenseDate BETWEEN '" + startDate + "' AND '" + endDate + "' group by expenseType order by expenseType asc";
             DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
             return reportData;
         }

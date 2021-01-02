@@ -184,7 +184,10 @@
             "Cash",
             "Bitcoin",
             "Cheque",
-            "Bank Transaction"});
+            "Bank Transaction",
+            "Debit Card",
+            "Credit Card",
+            "Other"});
             this.comboBoxAddPaymentType.Location = new System.Drawing.Point(583, 86);
             this.comboBoxAddPaymentType.Name = "comboBoxAddPaymentType";
             this.comboBoxAddPaymentType.Size = new System.Drawing.Size(211, 26);

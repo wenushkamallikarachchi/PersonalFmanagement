@@ -37,11 +37,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.expenseType = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.addExpense = new System.Windows.Forms.Button();
             this.Reset = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
+            this.comboBoxExpenseType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -121,19 +121,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(407, 82);
+            this.label7.Location = new System.Drawing.Point(409, 79);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 20);
+            this.label7.Size = new System.Drawing.Size(107, 20);
             this.label7.TabIndex = 22;
-            this.label7.Text = "Payment Type:";
-            // 
-            // expenseType
-            // 
-            this.expenseType.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expenseType.Location = new System.Drawing.Point(552, 79);
-            this.expenseType.Name = "expenseType";
-            this.expenseType.Size = new System.Drawing.Size(251, 28);
-            this.expenseType.TabIndex = 23;
+            this.label7.Text = "Expense Type:";
             // 
             // label4
             // 
@@ -184,17 +176,34 @@
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
+            // comboBoxExpenseType
+            // 
+            this.comboBoxExpenseType.Font = new System.Drawing.Font("Open Sans", 11.25F);
+            this.comboBoxExpenseType.FormattingEnabled = true;
+            this.comboBoxExpenseType.Items.AddRange(new object[] {
+            "Rent",
+            "Property taxes ",
+            "Utility bills",
+            "Lease / car loan payment.",
+            "Vehicle insurance",
+            "Transport",
+            "Food"});
+            this.comboBoxExpenseType.Location = new System.Drawing.Point(551, 76);
+            this.comboBoxExpenseType.Name = "comboBoxExpenseType";
+            this.comboBoxExpenseType.Size = new System.Drawing.Size(252, 28);
+            this.comboBoxExpenseType.TabIndex = 28;
+            // 
             // AddExpenseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(180)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(815, 311);
+            this.Controls.Add(this.comboBoxExpenseType);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.addExpense);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.expenseType);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
@@ -224,10 +233,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox expenseType;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button addExpense;
         private System.Windows.Forms.Button Reset;
         private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.ComboBox comboBoxExpenseType;
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,15 +21,15 @@ namespace w1673746
         static IncomeModel incomeModel = new IncomeModel();
         static ExpenseModel expenseModel = new ExpenseModel();
         static ReportModel reportModel = new ReportModel();
-
+        static DashBoardModel dashModel = new DashBoardModel();
 
         //varibale initailizing here
         private int user_id;
         static String contId;
         static String incomeId;
         static String expenseId;
-        String startDate = "";
-        String endDate = "";
+        DateTime startDate;
+        DateTime endDate;
 
         public void setId(int id)
         {
@@ -60,10 +62,7 @@ namespace w1673746
         {
 
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -90,6 +89,8 @@ namespace w1673746
             loadIncomeData();
             loadExpenseData();
             loadReportData();
+            loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -195,6 +196,8 @@ namespace w1673746
         private void tabPage3_Click(object sender, EventArgs e)
         {
             loadIncomeData();
+            loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
         }
 
         private void addIncome_Click(object sender, EventArgs e)
@@ -235,6 +238,8 @@ namespace w1673746
             updateIncome.setEnteredId(user_id);
             updateIncome.ShowDialog();
             loadIncomeData();
+            loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -307,6 +312,8 @@ namespace w1673746
         private void tabPage4_Click(object sender, EventArgs e)
         {
             loadExpenseData();
+            loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
         }
         //update funtion for expense
         private void updateExpense_Click(object sender, EventArgs e)
@@ -316,6 +323,8 @@ namespace w1673746
             updateExpenseForm.setEnteredId(user_id);
             updateExpenseForm.ShowDialog();
             loadExpenseData();
+            loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
         }
         //load the expense id from the row click
         private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -347,29 +356,92 @@ namespace w1673746
             newReport.ShowDialog();
             loadReportData();
         }
-
+        //display the total amount by clicking the table row
         private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[2].Value;
-            //endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
-            // loadIncomeSummary(this.user_id, startDate, endDate);
-            //loadExpenseSummary(this.user_id, startDate, endDate);
+            //datagrid eke null awoth errors ennwa
+            startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[2].Value;
+            endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
+            loadIncomeSummary(this.user_id, startDate, endDate);
+            loadExpenseSummary(this.user_id, startDate, endDate);
         }
+        //load the income total and payment type 
         private void loadIncomeSummary(int user_id, DateTime startDate, DateTime endDate)
         {
             DataTable reportData = reportModel.executeGetIncomeSummary(user_id, startDate, endDate);
             dataGridIncome.DataSource = reportData;
-            dataGridIncome.Columns[0].HeaderText = "Type";
+            dataGridIncome.Columns[0].HeaderText = "Payment Type";
             dataGridIncome.Columns[1].HeaderText = "Total Amount";
-        }
+            dataGridIncome.Columns[0].Width = 200;
+            dataGridIncome.Columns[1].Width = 200;
 
+        }
+        //load the expense type and expense total
         private void loadExpenseSummary(int user_id, DateTime startDate, DateTime endDate)
         {
             DataTable reportData = reportModel.executeGetExpenseSummary(user_id, startDate, endDate);
-
             dataGridExpense.DataSource = reportData;
-            dataGridExpense.Columns[0].HeaderText = "Type";
+            dataGridExpense.Columns[0].HeaderText = "Expense Type";
             dataGridExpense.Columns[1].HeaderText = "Total Amount";
+            dataGridExpense.Columns[0].Width = 200;
+            dataGridExpense.Columns[1].Width = 200;
+        }
+        /**ending the report implementation**/
+
+
+        /**starting the dashboard implementation**/
+        //dashboard income payment type overview
+        private void loadIncomeTypeOverviewChart()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            DataTable incomeData = dashModel.executeGetIncomeTypeOverview(user_id);
+            if (incomeData.Rows.Count > 0)
+            {
+                pieChartIncome.Series = new SeriesCollection();
+                foreach (DataRow dr in incomeData.Rows)
+                {
+                    PieSeries pieSeriesObj = new PieSeries
+                    {
+                        Title = dr["paymentType"].ToString(),
+                        Values = new ChartValues<double> { double.Parse(dr["Total"].ToString()) },
+                        DataLabels = true,
+                        LabelPoint = labelPoint
+                    };
+                    pieChartIncome.Series.Add(pieSeriesObj);
+                }
+
+                pieChartIncome.LegendLocation = LegendLocation.Bottom;
+            }
+            //else { }
+
+        }
+        //dashboard expense type overview pie chart
+        private void loadExpenseTypeOverviewChart()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            DataTable expenseData = dashModel.executeGetExpenseTypeOverview(user_id);
+            if (expenseData.Rows.Count > 0)
+            {
+                pieChartExpense.Series = new SeriesCollection();
+                foreach (DataRow dr in expenseData.Rows)
+                {
+                    PieSeries pieSeriesObj = new PieSeries
+                    {
+                        Title = dr["expenseType"].ToString(),
+                        Values = new ChartValues<double> { double.Parse(dr["Total"].ToString()) },
+                        DataLabels = true,
+                        LabelPoint = labelPoint
+                    };
+                    pieChartExpense.Series.Add(pieSeriesObj);
+                }
+
+                pieChartExpense.LegendLocation = LegendLocation.Bottom;
+            }
+            //else { }
         }
     }
 }
