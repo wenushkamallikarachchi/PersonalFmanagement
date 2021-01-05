@@ -27,3 +27,4 @@ D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\bin\Debug\LiveCh
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\bin\Debug\LiveCharts.Wpf.xml
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.csproj.CopyComplete
 D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\obj\Debug\w1673746.csprojAssemblyReference.cache
+D:\Studies\4th Year\Enterprise Application\CW\w1673746\w1673746\bin\Debug\itextsharp.dll

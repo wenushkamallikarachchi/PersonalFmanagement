@@ -33,12 +33,14 @@ namespace w1673746.Models
             return userData;
         }
         //search query for expenses
-        public DataTable executeSearchExpense(string name)
+        public DataTable executeSearchExpense(string name, int id)
         {
-            string sqlServer = "SELECT i.expense_ID, c.first_Name AS Payment_From, i.expenseDescription, i.expenseType, i.expenseDate,i.amount FROM expenseTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE c.first_Name LIKE '" + name + "%'";
+            string sqlServer = "SELECT i.expense_ID, c.first_Name AS Payment_From, i.expenseDescription, i.expenseType, i.expenseDate,i.amount FROM expenseTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE c.first_Name LIKE '" + name + "%' AND i.user_ID ='" + id + "'";
             DataTable expenseData = Connection.DbConnection.executeSQL(sqlServer);
             return expenseData;
         }
+
+
         //Delete query for expense
         public DataTable executeDeleteExpense(object id)
         {

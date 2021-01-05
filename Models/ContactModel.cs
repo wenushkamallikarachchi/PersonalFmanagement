@@ -48,9 +48,9 @@ namespace w1673746.Models
             return contactData;
         }
 
-        public DataTable executeSearchContact(string name)
+        public DataTable executeSearchContact(string name, int id)
         {
-            string contactSQL = "SELECT contact_ID,first_Name,job_role,phone_no,address FROM contactTB WHERE first_Name LIKE '" + name + "%'";
+            string contactSQL = "SELECT contact_ID,first_Name,job_role,phone_no,address FROM contactTB WHERE first_Name LIKE '" + name + "%' AND user_ID ='" + id + "'";
             DataTable contactData = Connection.DbConnection.executeSQL(contactSQL);
             return contactData;
         }

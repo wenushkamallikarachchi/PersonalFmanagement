@@ -12,7 +12,7 @@ namespace w1673746.Models
         //load all the report information by given id
         public DataTable executeDisplayAllReportData(int id)
         {
-            string sqlServer = "SELECT name,type,start_Date,end_Date,created FROM reportTB WHERE user_ID = '" + id + "'";
+            string sqlServer = "SELECT report_ID,name,type,start_Date,end_Date,created FROM reportTB WHERE user_ID = '" + id + "'";
             DataTable reportData = Connection.DbConnection.executeSQL(sqlServer);
             return reportData;
         }
@@ -40,6 +40,28 @@ namespace w1673746.Models
             string reportSQL = "SELECT expenseType, SUM(amount) as Total_Amount FROM expenseTB WHERE user_ID = '" + id + "' AND expenseDate BETWEEN '" + startDate + "' AND '" + endDate + "' group by expenseType order by expenseType asc";
             DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
             return reportData;
+        }
+        //pdf to total income by type
+        public DataTable executeGetIncomePDF(int id)
+        {
+            string reportSQL = "SELECT  paymentType, SUM(amount) as Total_Income FROM incomeTB WHERE user_ID = '" + id + "' group by paymentType order by paymentType asc";
+            DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
+            return reportData;
+        }
+        //pdf to total expenses by type
+        public DataTable executeGetExpensePDF(int id)
+        {
+            string reportSQL = "SELECT expenseType, SUM(amount) as Total_Amount FROM expenseTB WHERE user_ID = '" + id + "' group by expenseType order by expenseType asc";
+            DataTable reportData = Connection.DbConnection.executeSQL(reportSQL);
+            return reportData;
+        }
+
+        public DataTable executeDeleteReport(object id)
+        {
+            string sqlServer = "DELETE FROM reportTB WHERE report_ID = '" + id + "'";
+            DataTable expenseData = Connection.DbConnection.executeSQL(sqlServer);
+            return expenseData;
+
         }
     }
 }

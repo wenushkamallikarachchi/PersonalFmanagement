@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using w1673746.Models;
 using w1673746.Views;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace w1673746
 {
@@ -38,8 +41,6 @@ namespace w1673746
         {
             user_id = id;
         }
-
-
         public int getId()
         {
             return user_id;
@@ -48,46 +49,15 @@ namespace w1673746
         {
             InitializeComponent();
         }
-
-
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void tabPage5_Click(object sender, EventArgs e)
         {
             loadReportData();
         }
-
-        private void tabPage7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void MainForm_Load(object sender, EventArgs e)
+
+
         {
+
             loadUserData();
             loadIncomeData();
             loadExpenseData();
@@ -171,7 +141,7 @@ namespace w1673746
         //search method in contact tab
         private void textSearchName_TextChanged(object sender, EventArgs e)
         {
-            DataTable contactData = contactModel.executeSearchContact(textSearchContact.Text);
+            DataTable contactData = contactModel.executeSearchContact(textSearchContact.Text, user_id);
             dataGridView1.DataSource = contactData;
         }
         /**Ending the contact implementation **/
@@ -197,7 +167,7 @@ namespace w1673746
         // search method in income tab
         private void textSearchIncome_TextChanged(object sender, EventArgs e)
         {
-            DataTable incomeData = incomeModel.executeSearchIncome(textBoxIncome.Text);
+            DataTable incomeData = incomeModel.executeSearchIncome(textBoxIncome.Text, user_id);
             dataGridView2.DataSource = incomeData;
         }
         private void tabPage3_Click(object sender, EventArgs e)
@@ -229,6 +199,7 @@ namespace w1673746
                     incomeModel.executeDeleteIncome(dataGridView2.CurrentRow.Cells[0].Value);
                     loadIncomeTypeOverviewChart();
                     loadIncomeData();
+                    loadTotalIncome();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -268,7 +239,8 @@ namespace w1673746
                 sum += Convert.ToInt32(dataGridView2.Rows[i].Cells[5].Value);
             }
             totalIncome.Text = sum.ToString();
-            totIncome.Text = sum.ToString();
+
+            incomeLabel.Text = sum.ToString();
         }
 
         /**end the income implementation**/
@@ -315,6 +287,7 @@ namespace w1673746
 
                     expenseModel.executeDeleteExpense(dataGridView3.CurrentRow.Cells[0].Value);
                     loadExpenseData();
+                    loadExpenseTypeOverviewChart();
                     loadTotalExpense();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -333,7 +306,7 @@ namespace w1673746
         //search function for expense
         private void textSearchExpense_TextChanged(object sender, EventArgs e)
         {
-            DataTable expenseData = expenseModel.executeSearchExpense(textBoxExpense.Text);
+            DataTable expenseData = expenseModel.executeSearchExpense(textBoxExpense.Text, user_id);
             dataGridView3.DataSource = expenseData;
         }
         //loadd the expense data by page click
@@ -378,16 +351,96 @@ namespace w1673746
         /**end the expenses implementation**/
 
         /**Starting report**/
+        //pdf implementation
+        void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader)
+        {
+            System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
+            Document document = new Document();
+            document.SetPageSize(iTextSharp.text.PageSize.A4);
+            PdfWriter writer = PdfWriter.GetInstance(document, fs);
+            document.Open();
+
+            //Report Header
+            BaseFont bfntHead = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+
+            Paragraph prgHeading = new Paragraph();
+            prgHeading.Alignment = Element.ALIGN_CENTER;
+            prgHeading.Add(new Chunk(strHeader.ToUpper()));
+            document.Add(prgHeading);
+
+            //Add line break
+            document.Add(new Chunk("\n"));
+
+            //Write the table
+            PdfPTable table = new PdfPTable(dtblTable.Columns.Count);
+
+            //Table header
+            BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+
+            for (int i = 0; i < dtblTable.Columns.Count; i++)
+            {
+                PdfPCell cell = new PdfPCell();
+
+                cell.AddElement(new Chunk(dtblTable.Columns[i].ColumnName.ToUpper()));
+                table.AddCell(cell);
+            }
+            //table Data
+            for (int i = 0; i < dtblTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < dtblTable.Columns.Count; j++)
+                {
+                    table.AddCell(dtblTable.Rows[i][j].ToString());
+                }
+            }
+
+            document.Add(table);
+            document.Close();
+            writer.Close();
+            fs.Close();
+        }
+        //data for pdf reports
+        DataTable MakeDataTable(string name)
+        {
+            //Create income table object
+            if (name.Equals("income"))
+            {
+                DataTable reportData = reportModel.executeGetIncomePDF(user_id);
+                return reportData;
+            }
+            else
+            {
+                DataTable reportData = reportModel.executeGetExpensePDF(user_id);
+                return reportData;
+            }
+        }
+        //generate pdf income
+        private void pdfIncome_Click(object sender, EventArgs e)
+        {
+            DataTable dtbl = MakeDataTable("income");
+            ExportDataTableToPdf(dtbl, @"D:\TotalIncome.pdf", "Total Income at " + " " + predictStartDate);
+            System.Diagnostics.Process.Start(@"D:\TotalIncome.pdf");
+            //this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+        }
+        //  generate pdf expense
+        private void pdfExpense_Click(object sender, EventArgs e)
+        {
+            DataTable dtbl = MakeDataTable("expense");
+            ExportDataTableToPdf(dtbl, @"D:\TotalExpense.pdf", "Total Expense at " + " " + predictStartDate);
+            System.Diagnostics.Process.Start(@"D:\TotalExpense.pdf");
+            //this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+        }
         //load all the report by given ID
         private void loadReportData()
         {
             DataTable reportData = reportModel.executeDisplayAllReportData(user_id);
             dataGridView4.DataSource = reportData;
-            dataGridView4.Columns[0].HeaderText = "Name";
-            dataGridView4.Columns[1].HeaderText = "Type";
-            dataGridView4.Columns[2].HeaderText = "Start Date";
-            dataGridView4.Columns[3].HeaderText = "End Date";
-            dataGridView4.Columns[4].HeaderText = "Created";
+
+            dataGridView4.Columns[0].HeaderText = "Report ID";
+            dataGridView4.Columns[1].HeaderText = "Name";
+            dataGridView4.Columns[2].HeaderText = "Type";
+            dataGridView4.Columns[3].HeaderText = "Start Date";
+            dataGridView4.Columns[4].HeaderText = "End Date";
+            dataGridView4.Columns[5].HeaderText = "Created";
 
         }
         // create new report funtion
@@ -401,11 +454,19 @@ namespace w1673746
         //display the total amount by clicking the table row
         private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //datagrid eke null awoth errors ennwa
-            startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[2].Value;
-            endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
-            loadIncomeSummary(this.user_id, startDate, endDate);
-            loadExpenseSummary(this.user_id, startDate, endDate);
+            if ((DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value != null && (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value != null)
+            {
+                startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
+                endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value;
+
+                loadIncomeSummary(this.user_id, startDate, endDate);
+                loadExpenseSummary(this.user_id, startDate, endDate);
+            }
+            else
+            {
+                MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
         //load the income total and payment type 
         private void loadIncomeSummary(int user_id, DateTime startDate, DateTime endDate)
@@ -427,6 +488,37 @@ namespace w1673746
             dataGridExpense.Columns[1].HeaderText = "Total Amount";
             dataGridExpense.Columns[0].Width = 200;
             dataGridExpense.Columns[1].Width = 200;
+        }
+
+
+        private void deleteReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Do you want to delete this report permanently?", "Delete this record", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (dataGridView4.CurrentRow.Cells[0].Value != null)
+                    {
+                        reportModel.executeDeleteReport(dataGridView4.CurrentRow.Cells[0].Value);
+                        loadReportData();
+
+                        MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Please select a record", "Select Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                // and error occured
+            }
         }
         /**ending the report implementation**/
 
@@ -576,5 +668,7 @@ namespace w1673746
 
 
         }
+
+
     }
 }

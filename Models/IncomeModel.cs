@@ -33,9 +33,9 @@ namespace w1673746.Models
             return userData;
         }
         //search income by given id
-        public DataTable executeSearchIncome(string name)
+        public DataTable executeSearchIncome(string name, int id)
         {
-            string sqlServer = "SELECT i.income_ID, c.first_Name AS Payment_From, i.paymentDescription, i.paymentType, i.IncomeDate, i.amount FROM incomeTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE c.first_Name LIKE '" + name + "%'";
+            string sqlServer = "SELECT i.income_ID, c.first_Name AS Payment_From, i.paymentDescription, i.paymentType, i.IncomeDate, i.amount FROM incomeTB AS i INNER JOIN contactTB AS c ON i.contact_ID = c.contact_ID WHERE c.first_Name LIKE '" + name + "%' AND i.user_ID='" + id + "'";
             DataTable incomeData = Connection.DbConnection.executeSQL(sqlServer);
             return incomeData;
         }
