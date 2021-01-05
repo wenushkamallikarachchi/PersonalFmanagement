@@ -275,6 +275,7 @@ namespace w1673746
             expenseForm.ShowDialog();
             loadExpenseData();
             loadTotalExpense();
+            loadExpenseTypeOverviewChart();
         }
         //delete function for expense
         private void deleteExpense(object sender, EventArgs e)
