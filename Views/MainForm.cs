@@ -346,14 +346,16 @@ namespace w1673746
             //dashboard label
             totalExpense.Text = sum.ToString();
             //Tab label
-            totExpense.Text = sum.ToString();
+            String value = sum.ToString();
+            String.Format("{0:0.00}", value);
+            totExpense.Text = value;
         }
 
         /**end the expenses implementation**/
 
         /**Starting report**/
         //pdf implementation
-        void ExportDataTableToPdf(DataTable dtblTable, String strPdfPath, string strHeader)
+        void ExportDataTableToPdf(DataTable dtblIncomeTable, DataTable dtblExpenseTable, String strPdfPath, string strHeader)
         {
             System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
@@ -363,79 +365,127 @@ namespace w1673746
 
             //Report Header
             BaseFont bfntHead = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-
+            iTextSharp.text.Font fntHead = new iTextSharp.text.Font(bfntHead, 16, 1);
             Paragraph prgHeading = new Paragraph();
             prgHeading.Alignment = Element.ALIGN_CENTER;
-            prgHeading.Add(new Chunk(strHeader.ToUpper()));
+            prgHeading.Add(new Chunk(strHeader.ToUpper(), fntHead));
             document.Add(prgHeading);
 
             //Add line break
             document.Add(new Chunk("\n"));
 
-            //Write the table
-            PdfPTable table = new PdfPTable(dtblTable.Columns.Count);
+            //income table implementation
+            //Report Sub Header income
+            Paragraph prgIncomeSubHeader = new Paragraph();
+            BaseFont btnIncomeSubHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var subIncomeHeaderFontColour = new BaseColor(81, 152, 114);
+            iTextSharp.text.Font fntIncome = new iTextSharp.text.Font(btnIncomeSubHeader, 12, 1, subIncomeHeaderFontColour);
+            prgIncomeSubHeader.Alignment = Element.ALIGN_LEFT;
+            prgIncomeSubHeader.Add(new Chunk("Income Summary", fntIncome));
+            document.Add(prgIncomeSubHeader);
 
-            //Table header
-            BaseFont btnColumnHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            //Write the table income
+            PdfPTable incomeTable = new PdfPTable(dtblIncomeTable.Columns.Count);
 
-            for (int i = 0; i < dtblTable.Columns.Count; i++)
+            //Table header income
+            BaseFont btnIncomeColumnHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var columnIncomeHeaderFontColour = new BaseColor(255, 255, 255);
+            iTextSharp.text.Font fntIncomeColumnHeader = new iTextSharp.text.Font(btnIncomeColumnHeader, 10, 1, columnIncomeHeaderFontColour);
+            for (int i = 0; i < dtblIncomeTable.Columns.Count; i++)
             {
                 PdfPCell cell = new PdfPCell();
-
-                cell.AddElement(new Chunk(dtblTable.Columns[i].ColumnName.ToUpper()));
-                table.AddCell(cell);
+                var backgroundFontColour = new BaseColor(81, 152, 114);
+                cell.BackgroundColor = backgroundFontColour;
+                cell.AddElement(new Chunk(dtblIncomeTable.Columns[i].ColumnName.ToUpper(), fntIncomeColumnHeader));
+                incomeTable.AddCell(cell);
             }
-            //table Data
-            for (int i = 0; i < dtblTable.Rows.Count; i++)
+
+            //table Data income
+            for (int i = 0; i < dtblIncomeTable.Rows.Count; i++)
             {
-                for (int j = 0; j < dtblTable.Columns.Count; j++)
+                for (int j = 0; j < dtblIncomeTable.Columns.Count; j++)
                 {
-                    table.AddCell(dtblTable.Rows[i][j].ToString());
+                    incomeTable.AddCell(dtblIncomeTable.Rows[i][j].ToString());
                 }
             }
 
-            document.Add(table);
+            //Add line break
+            document.Add(new Chunk("\n"));
+            document.Add(incomeTable);
+            document.Add(new Chunk("\n"));
+            /**ending the income table implementation**/
+
+            /**starting the expense table implementation**/
+            //Report Sub Header expense
+            Paragraph prgExpenseSubHeader = new Paragraph();
+            BaseFont btnExpenseSubHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var subExpenseHeaderFontColour = new BaseColor(81, 152, 114);
+            iTextSharp.text.Font fntExpense = new iTextSharp.text.Font(btnExpenseSubHeader, 12, 1, subExpenseHeaderFontColour);
+            prgExpenseSubHeader.Alignment = Element.ALIGN_LEFT;
+            prgExpenseSubHeader.Add(new Chunk("Expense Summary", fntExpense));
+            document.Add(prgExpenseSubHeader);
+            document.Add(new Chunk("\n"));
+
+            //Write the table expense
+            PdfPTable expenseTable = new PdfPTable(dtblExpenseTable.Columns.Count);
+
+            //Table header expense
+            BaseFont btnExpenseColumnHeader = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            var columnHeaderFontColour = new BaseColor(255, 255, 255);
+            iTextSharp.text.Font fntExpenseColumnHeader = new iTextSharp.text.Font(btnExpenseColumnHeader, 10, 1, columnHeaderFontColour);
+            for (int i = 0; i < dtblExpenseTable.Columns.Count; i++)
+            {
+                PdfPCell cell = new PdfPCell();
+                var backgroundFontColour = new BaseColor(81, 152, 114);
+                cell.BackgroundColor = backgroundFontColour;
+                cell.AddElement(new Chunk(dtblExpenseTable.Columns[i].ColumnName.ToUpper(), fntExpenseColumnHeader));
+                expenseTable.AddCell(cell);
+            }
+
+            //table Data expense
+            for (int i = 0; i < dtblExpenseTable.Rows.Count; i++)
+            {
+                for (int j = 0; j < dtblExpenseTable.Columns.Count; j++)
+                {
+                    expenseTable.AddCell(dtblExpenseTable.Rows[i][j].ToString());
+                }
+            }
+
+            document.Add(expenseTable);
             document.Close();
             writer.Close();
             fs.Close();
         }
         //data for pdf reports
-        DataTable MakeDataTable(string name)
+        DataTable MakeDataTable(int user_id, DateTime startDate, DateTime endDate, string name)
         {
             //Create income table object
             if (name.Equals("income"))
             {
-                DataTable reportData = reportModel.executeGetIncomePDF(user_id);
+                DataTable reportData = reportModel.executeGetIncomeSummary(user_id, startDate, endDate);
                 return reportData;
             }
             else
             {
-                DataTable reportData = reportModel.executeGetExpensePDF(user_id);
+                DataTable reportData = reportModel.executeGetExpenseSummary(user_id, startDate, endDate);
                 return reportData;
             }
         }
-        //generate pdf income
+        //generate pdf income and expense
         private void pdfIncome_Click(object sender, EventArgs e)
         {
-            DataTable dtbl = MakeDataTable("income");
-            ExportDataTableToPdf(dtbl, @"D:\TotalIncome.pdf", "Total Income at " + " " + predictStartDate);
-            System.Diagnostics.Process.Start(@"D:\TotalIncome.pdf");
-            //this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            DataTable dtbl = MakeDataTable(user_id, startDate, endDate, "income");
+            DataTable dtb2 = MakeDataTable(user_id, startDate, endDate, "expense");
+            ExportDataTableToPdf(dtbl, dtb2, @"D:\Report.pdf", "Income and Expense Summary Report");
+            System.Diagnostics.Process.Start(@"D:\Report.pdf");
+
         }
-        //  generate pdf expense
-        private void pdfExpense_Click(object sender, EventArgs e)
-        {
-            DataTable dtbl = MakeDataTable("expense");
-            ExportDataTableToPdf(dtbl, @"D:\TotalExpense.pdf", "Total Expense at " + " " + predictStartDate);
-            System.Diagnostics.Process.Start(@"D:\TotalExpense.pdf");
-            //this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-        }
+
         //load all the report by given ID
         private void loadReportData()
         {
             DataTable reportData = reportModel.executeDisplayAllReportData(user_id);
             dataGridView4.DataSource = reportData;
-
             dataGridView4.Columns[0].HeaderText = "Report ID";
             dataGridView4.Columns[1].HeaderText = "Name";
             dataGridView4.Columns[2].HeaderText = "Type";
@@ -455,17 +505,20 @@ namespace w1673746
         //display the total amount by clicking the table row
         private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if ((DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value != null && (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value != null)
+            if ((DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value == null && (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value == null)
+            {
+
+                MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
             {
                 startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
                 endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value;
 
                 loadIncomeSummary(this.user_id, startDate, endDate);
                 loadExpenseSummary(this.user_id, startDate, endDate);
-            }
-            else
-            {
-                MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MakeDataTable(this.user_id, startDate, endDate, "");
             }
 
         }
@@ -670,6 +723,11 @@ namespace w1673746
 
         }
 
-
+        private void logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            loginForm login = new loginForm();
+            login.Show();
+        }
     }
 }

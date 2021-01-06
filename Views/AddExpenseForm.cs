@@ -64,12 +64,21 @@ namespace w1673746.Views
             result = MessageBox.Show("Do you want to add expense information? ", "Save Data & Add Income", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                int contactId = (int)comboBoxExpense.SelectedValue;
-                //Console.WriteLine("Set here Contact ID: " + contactId);
-                expenseModel.executeAddExpense(expenseDescription.Text, comboBoxExpenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), user_id, contactId);
-                MessageBox.Show("Successfully Add Expense. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                clearFeilds();
-                this.Hide();
+                if (comboBoxExpense.SelectedValue == null)
+                {
+                    MessageBox.Show("You have to select a correct contact name. ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    int contactId = (int)comboBoxExpense.SelectedValue;
+                    //Console.WriteLine("Set here Contact ID: " + contactId);
+                    expenseModel.executeAddExpense(expenseDescription.Text, comboBoxExpenseType.Text, dateTimePickerExpense.Value, float.Parse(amountExpense.Text), user_id, contactId);
+                    MessageBox.Show("Successfully Add Expense. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearFeilds();
+                    this.Hide();
+                }
+
             }
         }
 

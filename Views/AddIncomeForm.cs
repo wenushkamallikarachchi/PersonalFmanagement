@@ -60,12 +60,23 @@ namespace w1673746.Views
             result = MessageBox.Show("Do you want to add income information? ", "Save Data & Add Income", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                int contactId = (int)comboBoxPaymentFrom.SelectedValue;
-                //Console.WriteLine("Set here Contact ID: " + contactId);
-                incomeModel.executeAddIncome(paymentDes.Text, comboBoxAddPaymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), user_id, contactId);
-                MessageBox.Show("Successfully Add Income. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                clearFeilds();
-                this.Hide();
+                if (comboBoxPaymentFrom.SelectedValue == null)
+                {
+
+                    MessageBox.Show("You have to select a correct contact name. ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+
+                    int contactId = (int)comboBoxPaymentFrom.SelectedValue;
+                    //Console.WriteLine("Set here Contact ID: " + contactId);
+                    incomeModel.executeAddIncome(paymentDes.Text, comboBoxAddPaymentType.Text, dateTimePicker.Value, float.Parse(amount.Text), user_id, contactId);
+                    MessageBox.Show("Successfully Add Income. ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearFeilds();
+                    this.Hide();
+                }
+
             }
         }
 
