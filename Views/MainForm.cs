@@ -505,11 +505,10 @@ namespace w1673746
         //display the total amount by clicking the table row
         private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if ((DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value == null && (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value == null)
+            if (dataGridView4.Rows.Count != 1)
             {
-
                 MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                return;
             }
             else
             {

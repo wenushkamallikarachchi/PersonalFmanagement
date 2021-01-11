@@ -36,7 +36,7 @@ namespace w1673746.Views
         {
             MessageBoxButtons okBt = MessageBoxButtons.OK;
             MessageBoxIcon icon = MessageBoxIcon.Information;
-            string message = "Add Contact Error";
+            string message = "Add Report Error";
 
 
             //report name
