@@ -57,7 +57,6 @@ namespace w1673746
 
 
         {
-
             loadUserData();
             loadIncomeData();
             loadExpenseData();
@@ -146,6 +145,7 @@ namespace w1673746
         }
         /**Ending the contact implementation **/
 
+
         /**Starting Income implementation**/
         //load all the income by given id
         private void loadIncomeData()
@@ -172,7 +172,7 @@ namespace w1673746
         }
         private void tabPage3_Click(object sender, EventArgs e)
         {
-            loadIncomeData();
+            // loadIncomeData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
             loadTotalIncome();
@@ -187,6 +187,8 @@ namespace w1673746
             loadIncomeData();
             loadTotalIncome();
             loadIncomeTypeOverviewChart();
+            loadExpenseTypeOverviewChart();
+            loadIncomeExpenseChart();
         }
         //delete function for income
         private void deleteIncome_Click(object sender, EventArgs e)
@@ -197,9 +199,11 @@ namespace w1673746
                 {
 
                     incomeModel.executeDeleteIncome(dataGridView2.CurrentRow.Cells[0].Value);
-                    loadIncomeTypeOverviewChart();
                     loadIncomeData();
                     loadTotalIncome();
+                    loadIncomeTypeOverviewChart();
+                    loadExpenseTypeOverviewChart();
+                    loadIncomeExpenseChart();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -224,6 +228,7 @@ namespace w1673746
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
             loadTotalIncome();
+            loadIncomeExpenseChart();
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -238,9 +243,9 @@ namespace w1673746
             {
                 sum += Convert.ToInt32(dataGridView2.Rows[i].Cells[5].Value);
             }
-            totalIncome.Text = sum.ToString();
+            totalIncome.Text = sum.ToString() + ".00";
 
-            incomeLabel.Text = sum.ToString();
+            incomeLabel.Text = sum.ToString() + ".00";
         }
 
         /**end the income implementation**/
@@ -275,7 +280,9 @@ namespace w1673746
             expenseForm.ShowDialog();
             loadExpenseData();
             loadTotalExpense();
+            loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadIncomeExpenseChart();
         }
         //delete function for expense
         private void deleteExpense(object sender, EventArgs e)
@@ -290,6 +297,7 @@ namespace w1673746
                     loadExpenseData();
                     loadExpenseTypeOverviewChart();
                     loadTotalExpense();
+                    loadIncomeExpenseChart();
                     MessageBox.Show("The selected record has been deletecd.", "Deleted Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -310,10 +318,11 @@ namespace w1673746
             DataTable expenseData = expenseModel.executeSearchExpense(textBoxExpense.Text, user_id);
             dataGridView3.DataSource = expenseData;
         }
-        //loadd the expense data by page click
+        //load the expense data by page click
         private void tabPage4_Click(object sender, EventArgs e)
         {
-            loadExpenseData();
+
+            // loadExpenseData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
             loadTotalExpense();
@@ -328,7 +337,9 @@ namespace w1673746
             loadExpenseData();
             loadIncomeTypeOverviewChart();
             loadExpenseTypeOverviewChart();
+            loadIncomeExpenseChart();
             loadTotalExpense();
+
         }
         //load the expense id from the row click
         private void dataGridView3_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -344,18 +355,17 @@ namespace w1673746
                 sum += Convert.ToInt32(dataGridView3.Rows[i].Cells[5].Value);
             }
             //dashboard label
-            totalExpense.Text = sum.ToString();
+            totalExpense.Text = sum.ToString() + ".00";
             //Tab label
-            String value = sum.ToString();
-            String.Format("{0:0.00}", value);
-            totExpense.Text = value;
+            totExpense.Text = sum.ToString() + ".00";
         }
 
         /**end the expenses implementation**/
 
-        /**Starting report**/
+
+        /**Starting report implementation**/
         //pdf implementation
-        void ExportDataTableToPdf(DataTable dtblIncomeTable, DataTable dtblExpenseTable, String strPdfPath, string strHeader)
+        void ExportToPdf(DataTable dtblIncomeTable, DataTable dtblExpenseTable, String strPdfPath, string strHeader)
         {
             System.IO.FileStream fs = new FileStream(strPdfPath, FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document();
@@ -476,7 +486,7 @@ namespace w1673746
         {
             DataTable dtbl = MakeDataTable(user_id, startDate, endDate, "income");
             DataTable dtb2 = MakeDataTable(user_id, startDate, endDate, "expense");
-            ExportDataTableToPdf(dtbl, dtb2, @"D:\Report.pdf", "Income and Expense Summary Report");
+            ExportToPdf(dtbl, dtb2, @"D:\Report.pdf", "Income and Expense Summary Report");
             System.Diagnostics.Process.Start(@"D:\Report.pdf");
 
         }
@@ -505,20 +515,20 @@ namespace w1673746
         //display the total amount by clicking the table row
         private void dataGridReportView_RowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dataGridView4.Rows.Count != 1)
-            {
-                MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else
-            {
-                startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
-                endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value;
+            /* if (dataGridView4.Rows.Count != 1)
+             {
+                 MessageBox.Show("You have to create a new report.", "New Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 return;
+             }
+             else
+             {*/
+            startDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[3].Value;
+            endDate = (DateTime)dataGridView4.Rows[e.RowIndex].Cells[4].Value;
 
-                loadIncomeSummary(this.user_id, startDate, endDate);
-                loadExpenseSummary(this.user_id, startDate, endDate);
-                MakeDataTable(this.user_id, startDate, endDate, "");
-            }
+            loadIncomeSummary(this.user_id, startDate, endDate);
+            loadExpenseSummary(this.user_id, startDate, endDate);
+            MakeDataTable(this.user_id, startDate, endDate, "");
+
 
         }
         //load the income total and payment type 
@@ -582,7 +592,7 @@ namespace w1673746
         {
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
+            totalIncomeOverview.Text = "";
             DataTable incomeData = dashModel.executeGetIncomeTypeOverview(user_id);
             if (incomeData.Rows.Count > 0)
             {
@@ -603,7 +613,9 @@ namespace w1673746
             }
             else
             {
-                incomeOverviewText.Text = "You have to add atleast one income.";
+                totalIncomeOverview.Text = "You have to add atleast one income.";
+
+
             }
 
         }
@@ -612,7 +624,7 @@ namespace w1673746
         {
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
+            totalExpenseOverview.Text = "";
             DataTable expenseData = dashModel.executeGetExpenseTypeOverview(user_id);
             if (expenseData.Rows.Count > 0)
             {
@@ -631,7 +643,10 @@ namespace w1673746
 
                 pieChartExpense.LegendLocation = LegendLocation.Bottom;
             }
-            //else { }
+            else
+            {
+                totalExpenseOverview.Text = "You have to add atleast one Expense.";
+            }
 
 
 
@@ -641,6 +656,7 @@ namespace w1673746
         {
             DataTable incomeData = dashModel.getTotalIncomes(user_id);
             DataTable expenseData = dashModel.getTotalExpenses(user_id);
+            incomeExpense.Text = "";
             if (expenseData.Rows.Count > 0 || incomeData.Rows.Count > 0)
             {
                 cartesianChart.Series = new SeriesCollection();
@@ -686,7 +702,8 @@ namespace w1673746
 
             else
             {
-                incomeVsExpense.Text = "You have to add atleast one income or expense";
+                incomeExpense.Text = "You have to add atleast one income or expense";
+
             }
 
 

@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.incomeExpense = new System.Windows.Forms.Label();
+            this.totalExpenseOverview = new System.Windows.Forms.Label();
+            this.totalIncomeOverview = new System.Windows.Forms.Label();
             this.incomeVsExpense = new System.Windows.Forms.Label();
             this.incomeOverviewText = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -138,6 +141,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.incomeExpense);
+            this.tabPage1.Controls.Add(this.totalExpenseOverview);
+            this.tabPage1.Controls.Add(this.totalIncomeOverview);
             this.tabPage1.Controls.Add(this.incomeVsExpense);
             this.tabPage1.Controls.Add(this.incomeOverviewText);
             this.tabPage1.Controls.Add(this.label12);
@@ -154,6 +160,33 @@
             this.tabPage1.Size = new System.Drawing.Size(1001, 479);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
+            // 
+            // incomeExpense
+            // 
+            this.incomeExpense.AutoSize = true;
+            this.incomeExpense.Location = new System.Drawing.Point(391, 330);
+            this.incomeExpense.Name = "incomeExpense";
+            this.incomeExpense.Size = new System.Drawing.Size(50, 18);
+            this.incomeExpense.TabIndex = 11;
+            this.incomeExpense.Text = "label18";
+            // 
+            // totalExpenseOverview
+            // 
+            this.totalExpenseOverview.AutoSize = true;
+            this.totalExpenseOverview.Location = new System.Drawing.Point(752, 330);
+            this.totalExpenseOverview.Name = "totalExpenseOverview";
+            this.totalExpenseOverview.Size = new System.Drawing.Size(50, 18);
+            this.totalExpenseOverview.TabIndex = 10;
+            this.totalExpenseOverview.Text = "label19";
+            // 
+            // totalIncomeOverview
+            // 
+            this.totalIncomeOverview.AutoSize = true;
+            this.totalIncomeOverview.Location = new System.Drawing.Point(52, 330);
+            this.totalIncomeOverview.Name = "totalIncomeOverview";
+            this.totalIncomeOverview.Size = new System.Drawing.Size(50, 18);
+            this.totalIncomeOverview.TabIndex = 9;
+            this.totalIncomeOverview.Text = "label18";
             // 
             // incomeVsExpense
             // 
@@ -240,7 +273,7 @@
             // 
             this.totalExpense.AutoSize = true;
             this.totalExpense.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalExpense.Location = new System.Drawing.Point(125, 36);
+            this.totalExpense.Location = new System.Drawing.Point(110, 36);
             this.totalExpense.Name = "totalExpense";
             this.totalExpense.Size = new System.Drawing.Size(67, 26);
             this.totalExpense.TabIndex = 4;
@@ -282,7 +315,7 @@
             // 
             this.totalIncome.AutoSize = true;
             this.totalIncome.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalIncome.Location = new System.Drawing.Point(107, 36);
+            this.totalIncome.Location = new System.Drawing.Point(95, 36);
             this.totalIncome.Name = "totalIncome";
             this.totalIncome.Size = new System.Drawing.Size(67, 26);
             this.totalIncome.TabIndex = 5;
@@ -854,12 +887,12 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(26, 128);
-            this.dateTimePicker2.MaxDate = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
-            this.dateTimePicker2.MinDate = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
+            this.dateTimePicker2.MaxDate = new System.DateTime(2021, 1, 31, 0, 0, 0, 0);
+            this.dateTimePicker2.MinDate = new System.DateTime(2021, 1, 12, 0, 0, 0, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(239, 25);
             this.dateTimePicker2.TabIndex = 2;
-            this.dateTimePicker2.Value = new System.DateTime(2021, 1, 2, 0, 0, 0, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2021, 1, 12, 0, 0, 0, 0);
             // 
             // dateTimePickerEnd
             // 
@@ -1006,6 +1039,9 @@
         private System.Windows.Forms.Label incomeLabel;
         private System.Windows.Forms.Button deleteReport;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label totalIncomeOverview;
+        private System.Windows.Forms.Label totalExpenseOverview;
+        private System.Windows.Forms.Label incomeExpense;
     }
 }
 

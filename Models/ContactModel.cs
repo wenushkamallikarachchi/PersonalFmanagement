@@ -16,10 +16,10 @@ namespace w1673746.Models
             return userData;
         }
 
-        public DataTable executeDeleteUserData(object name)
+        public DataTable executeDeleteUserData(object id)
         {
-            Console.WriteLine(name);
-            string sqlServer = "DELETE FROM contactTB WHERE first_Name = '" + name + "'";
+            Console.WriteLine(id);
+            string sqlServer = "DELETE FROM contactTB WHERE contact_ID = '" + id + "'";
             DataTable userData = Connection.DbConnection.executeSQL(sqlServer);
             return userData;
         }
